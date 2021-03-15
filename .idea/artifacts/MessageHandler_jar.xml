@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MessageHandler:jar">
+    <output-path>$USER_HOME$/Desktop/Server/mc server/plugins</output-path>
+    <root id="archive" name="MessageHandler.jar">
+      <element id="module-output" name="MessageHandler" />
+    </root>
+  </artifact>
+</component>

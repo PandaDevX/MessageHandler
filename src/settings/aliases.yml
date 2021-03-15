@@ -1,0 +1,11 @@
+# Enjoy using the plugin
+# Rate 5 stars and support ♥
+
+tutorial:
+  - '&bRun by using &6/tutorial &bcommand.'
+  - '&bYou can add your own'
+
+redspeaks:
+  - '&bThis is going to run by using &6/redspeaks'
+  - '&bYou can edit the messages here'
+  - '&bPermision node will be &6messagehandler.alias.redspeaks'

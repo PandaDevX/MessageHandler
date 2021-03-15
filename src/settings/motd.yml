@@ -1,0 +1,12 @@
+# This is the ingame motd
+motd:
+  - '&bwelcome to &e%server_name%'
+  - '&bHi &r%prefix%&e%player_displayname%'
+  - '&btype &a/help &bfor help'
+
+# This is what players see on server lists
+server-motd:
+
+  enable: true
+
+  motd: '&bWelcome to &a%server_name%'

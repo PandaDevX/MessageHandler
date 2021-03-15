@@ -1,0 +1,223 @@
+# This is about client or server name
+Server Name: 'Message Craft'
+
+  # Anti Swear
+  # You can either block or replace message once player swear
+
+  ##################################
+  ##                              ##
+  ####       Anti Swear         ####
+  ##                              ##
+  ##################################
+
+Anti Swear:
+  # block or replace or disable
+  Option: 'block'
+
+  # replacement character
+  # if test is a swear word it will become ****
+  Replacement Char: '*'
+
+    ##################################
+    ##                              ##
+    ####       Grammar Nazi       ####
+    ##                              ##
+    ##################################
+
+# Grammar Nazi
+Grammar:
+  # Auto capitalization
+  Auto Capitalization: true
+
+  # Check for wrong grammar and auto put punctuations
+  Grammar Fix: true
+
+
+    ##################################
+    ##                              ##
+    ####       Chat Channel       ####
+    ##                              ##
+    ##################################
+
+# Chat Channels
+Chat Channel:
+  # Local and Global Chat
+  # You can disable and enable this feature
+  Radius Enable: true
+
+  # Local Chat
+  Local: '[L]'
+  Local Radius: 100
+
+  # Global Chat
+  # Listener will be !
+  # ! <chat message> Automatically chat with global
+  Global: '&6&lGLOBAL'
+  Global Listener: '!'
+
+  # Staff Chat
+  # Listener will be # as example
+  # Define permission that the player must have to chat
+  # # <chat message>  Automatically will chat with staffs
+  StaffChat Enable: true
+  StaffChat Permission: 'messagehandler.staffchat'
+  StaffChat: '&6&lSTAFF'
+  StaffChat Listener: '#'
+
+##################################
+##                              ##
+####       Chat Format        ####
+##                              ##
+##################################
+
+# Chat Formats
+Chat Format:
+
+  # You can enable or disable this feature
+  Enable: true
+
+  # This will trigger if group you specify below could not be found
+  Default Format: '&r{channel} &e&lDefault &7{player} &f> &r{message}'
+
+  # Per groups formats Case Sensitive
+  Groups:
+    Admin:
+      Format: '&r{channel} &6&lAdmin &f{player} &f> &r{message}'
+
+##################################
+##                              ##
+####       Anti Spam          ####
+##                              ##
+##################################
+
+Anti Spam:
+
+  # Prevent player from chatting similar words
+  Anti Chat Similar: true
+
+  # Percentage of similiarity from previous message to check so you can block them if requirements met
+  Similarty Percent: 80
+
+  # Chat cooldown
+  Chat Cooldown:
+
+    Enable : true
+
+    Seconds: 3
+    # use %time_left% for the remaining time
+    Message: '&6You can only send one message per &c3 seconds'
+
+  # Command Cooldown
+  Command Cooldown:
+
+    Enable: false
+
+    Seconds: 3
+    # you can use %time_left% same above
+    Message: '&6You can only use one command per &c3 Seconds'
+
+##################################
+##                              ##
+####       Anti Ad            ####
+##                              ##
+##################################
+Anti Ad:
+
+  Enable: true
+
+##################################
+##                              ##
+####       Anti Caps          ####
+##                              ##
+##################################
+Anti Caps:
+
+  Enable: true
+
+  # Minimum word length to check for capslock
+  Min Word: 8
+
+  # Input the percentage criteria
+  Percentage: 80
+
+  # You can either block or put replace so message will be replaced to lower case message
+  Action: 'block'
+
+##################################
+##                              ##
+####      Custom NameTa       ####
+##                              ##
+##################################
+
+Custom NameTag:
+
+  Enable: true
+
+  # Show player health below their name
+  Show Player Health: true
+
+  # setup name tags here
+  OP:
+    Prefix: '&4&lOP '
+    Color: 'DARK_GREEN'
+
+  AFK:
+    Prefix: '&7&lAFK '
+    Color: 'DARK_GRAY'
+
+  Default:
+    Prefix: '&e&lDefault '
+    Color: 'AQUA'
+
+  Groups:
+
+    # You can add your own group
+    # permission is based on the name
+    # this is an example messagehandler.nametag.test
+    test:
+      Prefix: '&5&lTest '
+      Color: 'GRAY'
+
+##################################
+##                              ##
+####       Ping Player        ####
+##                              ##
+##################################
+
+# Ping player event
+# Customize it to your preference
+Ping Player:
+
+  Enable: true
+
+  # listen to character = @ + player name
+  Listener: '@'
+
+##################################
+##                              ##
+####         Logs             ####
+##                              ##
+##################################
+
+# Setup server logs
+Logs:
+
+  # Logs chat
+  Chat: true
+
+  # Logs command
+  Command: true
+
+
+##################################
+##                              ##
+####        Indicators        ####
+##                              ##
+##################################
+
+# This is for damage and health indicator during attacking mobs or player
+Indicator:
+
+  # Show on air
+  Air: true
+

@@ -1,0 +1,31 @@
+auto-broadcast:
+
+  enable: true
+
+  # 1s - 1second(s)
+  # 1m - 1minute(s)
+  # 1d - 1day(s)
+  # 1w - 1week(s)
+  # sample combination >> 1w 1d = Equivalent to 1week and 1day
+  # interval is the cooldown before the message is sent
+  # it is broadcast depends on your order
+  interval: '1m'
+
+  messages:
+    - '&bWelcome to the server'
+    - '&bHope you are all good'
+
+  # for title broadcast
+  enable-title: false
+
+  title:
+
+    #This is a sample title format , you can add as much as you want
+    #fade in , fade out and stay are based on ticks
+    #20 ticks is equivalent to 1 second
+    first:
+      title: '&6MessageHandler'
+      sub-title: '&bWelcome to the server'
+      fade-in: 30
+      stay: 20
+      fade-out: 30

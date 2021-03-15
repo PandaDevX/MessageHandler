@@ -1,0 +1,23 @@
+# input your own categories
+
+# automatically hopper inventory if your category is not more than 4
+# set the maximum row(s) of inventory
+inventory-row: 1
+
+categories:
+
+  grief:
+    name: '&3&lGrief'
+    type: 'BEDROCK'
+    slot: 1
+    lore:
+      - ''
+      - '&7DESCRIPTION: &fThis is about griefing'
+
+  staff:
+    name: '&3&lStaff Abuse'
+    type: 'LEATHER'
+    slot: 2
+    lore:
+      - ''
+      - '&7DESCRIPTION: &fThis is about staff abuse'

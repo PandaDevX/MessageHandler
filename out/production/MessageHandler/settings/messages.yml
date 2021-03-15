@@ -1,0 +1,72 @@
+prefix: '&8[&eMessageHandler&8] &b'
+error:
+  block-message: 'You cannot do that.'
+  no-permission: 'You have no permission to do that'
+  not-player: 'You must be a player to do that'
+  usage: 'Wrong usage use &c%usage%'
+  blocked-command: 'You are not permitted to use &c%command%'
+  no-advertise-website: 'You cannot advertise any website here'
+  no-advertise-ip: 'You cannot advertise any ip address'
+  player-not-found: '&c[ERROR] &bplayer not found'
+  group-chat-is-yours: 'You cannot join to your own group chat'
+  group-not-exist: 'The &c%name% &bgroupchat you are looking for does not exists'
+  leave-not-member: 'You are not member of that groupchat'
+  no-caps: 'You cannot do that.'
+  disband-not-own: 'You cannot disband the group you do not own'
+  group-chat-exist-already: 'This group is already existed'
+  no-group-exist: 'No group exist'
+  filter-no-group: 'You do not belong to the group'
+success:
+  clear-filter: 'Your chat filter is cleared'
+  filtered-chat: 'Your chat is now filtered, you are chatting with group: &c%name%'
+  join: 'You have joined to &c%name% successfully'
+  cleared: 'Successfully cleared'
+  reload: 'Successfully reload'
+  change-nick: 'Successfully changed nickname to %nickname%'
+  cleared-nick: 'Successfully cleared your nickname'
+  cleared-other: 'Successfully cleared the chat of: %name%'
+  cleared-by-other: 'Chat cleared by: &a%clearer%'
+  create-groupchat: 'Successfully created a &a%type% &bgroup named &a%groupname% &bcreated by %creator%'
+  leave: 'Successfully leave to &c%name%'
+  disband-group: 'Successfully disband the group &c%name%'
+  change-nickname: 'Successfully change the nickname of the group to %nickname%'
+  success-clear-nickname: 'Successfully cleared nickname'
+help:
+  header: '&8--------------- [&e MessageHandler &8] ---------------'
+  help: '&b/messagehandler help - &7Displays this'
+  list: '&b/messagehandler list - &7List all forbidden words'
+  clear: '&b/messagehandler clear <all / playername> - &7Clears the chat'
+  reload: '&b/messagehandler reload - &7Reloads configurations'
+  nickname: '&b/messagehandler nickname [nickname] - &7Create your nickname'
+  broadcast: '&b/messagehandler broadcast [message] - &7Broadcast a message'
+  filter: '&b/messagehandler filter [group | clear] - &7Filters your message'
+  groupchat: '&b/messagehandler groupchat help - &7For full information'
+
+groupchat:
+  header: '&8--------------- [&e Groupchat &8] ---------------'
+  information: '&6IMPORTANT: [required] <not required>'
+  create: '&bgroupchat create [name] <password> - &7Create a new groupchat'
+  join: '&bgroupchat join [name] <password> - &7Join a groupchat'
+  leave: '&bgroupchat leave [name] - &7Leave a groupchat'
+  disband: '&bgroupchat disband [name] - &7Disband a groucphat'
+  members: '&bgroupchat members [name] <page> - &7Display all members'
+  list: '&bgroupchat list <page> - &7Display all groupchats'
+  nickname: '&bgroupchat nickname [name] <nickname | clear>'
+
+chat:
+  on-swear: 'You cannot do that'
+join:
+  first-time: 'Welcome &e%display_name% &bto the server'
+  join-message: 'Welcome back &e%display_name% &bto the server'
+
+leave:
+  leave-message: '&e%display_name% &bleft'
+
+death:
+  message: '&c%name% &bhas been killed'
+  message-killed: '&c%name% &bhas been killed by &c%killer_nick%'
+  message-killer: 'You killed &c%displayname%'
+  death-cause: 'You have died because of %cause%'
+
+format:
+  broadcast: '&8[&eBROADCAST&8] &B%message%'

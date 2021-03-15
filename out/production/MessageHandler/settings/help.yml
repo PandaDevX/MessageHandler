@@ -1,0 +1,26 @@
+Help:
+  pages:
+    # this will occur if the player is permitted and typed /help anotherhelp
+    anotherHelp:
+      - 'This is a custom help page'
+      - 'They must do /help anotherHelp <case sensitive>'
+      - 'do not forget player must have the permission below'
+      - 'messagehandler.help.anotherHelp'
+
+  # default or dummy or any other will occur if they only done /help without arguments
+  # This will occur if you have no messagehandler.help.dummy permission
+  default:
+    - 'Help page'
+    - 'Kill mobs to rank up'
+    - 'Support message handler and the author'
+    - 'Thank you so much for using the plugin'
+
+  # messagehandler.help.<dummy>
+  # you can add as many as you want
+  # one list is going to sent to the player only
+  # dummy is only an example you can add as many as you want
+  dummy:
+    - 'This is a dummy help page'
+    - 'Create your own'
+    - 'The player must have permission messagehandler.help.dummy'
+    - 'Thank you so much for using the plugin'
