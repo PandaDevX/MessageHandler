@@ -37,7 +37,7 @@ public class MainPage {
         ItemStack itemStackGroupChat = createItem("GroupChat", "Click for group chat section", Material.COMMAND_BLOCK);
         inventory.setItem(10, itemStackGroupChat);
 
-        ItemStack itemStackFriends = createItem("Friends", "Click for friends section", Material.APPLE);
+        ItemStack itemStackFriends = createItem("MessageHandler", "Click for the details of the plugin", Material.APPLE);
         inventory.setItem(11, itemStackFriends);
 
         ItemStack itemStackCustom = createItem("Customization", "Click for customization of messages", Material.CACTUS);

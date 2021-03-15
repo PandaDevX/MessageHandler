@@ -31,7 +31,7 @@ public class CommandNick implements CommandExecutor {
             return true;
         }
         String nickName = "";
-        if(args[0].length() >= 16)
+        if(args[0].length() > 16)
           nickName = args[0].substring(0, 16);
         else
             nickName = args[0];

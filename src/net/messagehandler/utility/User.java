@@ -4,6 +4,7 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.messagehandler.MessageHandler;
 import net.messagehandler.utility.holo.afk.HologramAFK;
+import net.milkbowl.vault.Vault;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -632,8 +633,16 @@ public class User {
         return config.getString(uuid.toString() + ".leaveMessage");
     }
 
+    public boolean hasCustomPrefix() {
+        return config.get(uuid.toString() + ".prefix") != null;
+    }
+
     public String getPrefix() {
         String group = VaultHook.getPlayerGroup(player);
+        if(hasCustomPrefix()) {
+            VaultHook.setPrefix(player, config.getString(uuid.toString() + ".prefix"));
+            return VaultHook.getPlayerPrefix(player) != null ? VaultHook.getPlayerPrefix(player) : "";
+        }
         if(group.equals("")) {
             VaultHook.setPrefix(player, MessageHandler.getInstance().getConfig().getString("Chat Format.Default.Prefix"));
             return VaultHook.getPlayerPrefix(player) != null ? VaultHook.getPlayerPrefix(player) : "";

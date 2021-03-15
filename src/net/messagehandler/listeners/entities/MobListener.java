@@ -160,5 +160,6 @@ public class MobListener implements Listener {
         int maxHealth = (int) mob.getMaxHealth();
         if(mob.isDead()) return;
         mob.setCustomName(Utility.colorize("&c" + name + " &a" + health + " / " + maxHealth));
+        mob.setCustomNameVisible(true);
     }
 }

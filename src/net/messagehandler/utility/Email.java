@@ -97,9 +97,9 @@ public class Email {
         if(names.contains(recipient)) {
             raw.add("Player not found");
         }
-        if(senderName.equalsIgnoreCase(recipient)) {
-            raw.add("Recipient same to the sender name");
-        }
+        //if(senderName.equalsIgnoreCase(recipient)) {
+        //    raw.add("Recipient same to the sender name");
+        //}
         if(Utility.sensor(Collections.singletonList(message), Utility.getWords(), sender)) {
             raw.add("Swear Words");
         }

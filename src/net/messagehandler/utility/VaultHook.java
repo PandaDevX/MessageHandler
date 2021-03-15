@@ -33,11 +33,17 @@ public class VaultHook {
     }
 
     public static void setPrefix(Player player, String prefix) {
+        if(prefix.length() > 16) {
+            prefix = prefix.substring(0, 16);
+        }
         chat.setPlayerPrefix(player, prefix);
     }
 
-    public static void setSuffix(Player player, String prefix) {
-        chat.setPlayerSuffix(player, prefix);
+    public static void setSuffix(Player player, String suffix) {
+        if(suffix.length() > 16) {
+            suffix = suffix.substring(0,16);
+        }
+        chat.setPlayerSuffix(player, suffix);
     }
     public static String getPlayerPrefix(Player player) {
         if (chat.getPlayerPrefix(player) == null)

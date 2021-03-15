@@ -35,7 +35,6 @@ import net.messagehandler.messaging.MessageFile;
 import net.messagehandler.messaging.MessageFormatter;
 import net.messagehandler.utility.*;
 import org.bukkit.Bukkit;
-
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;

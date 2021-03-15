@@ -100,6 +100,12 @@ public class MenuClick implements Listener {
                 bannedWords.setup(1);
                 bannedWords.open();
                 break;
+            case "MessageHandler":
+                e.setCancelled(true);
+                user.getPlayer().closeInventory();
+                user.sendMessage("&6MessageHandler: &fv" + MessageHandler.getInstance().getDescription().getVersion());
+                user.sendMessage("&6Author: &f" + MessageHandler.getInstance().getDescription().getAuthors().get(0));
+                break;
             default:
                 e.setCancelled(true);
                 break;
