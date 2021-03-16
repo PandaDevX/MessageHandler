@@ -91,13 +91,6 @@ public class Tickets {
         if(page > 1) {
             inventory.setItem(50, Utility.createGUIItem("&3&lPrev", Material.ENDER_PEARL));
         }
-        List<String> ticketLore = new ArrayList<>();
-        if(user.ticketNotification()) {
-            ticketLore.add(Utility.colorize("&7Toggle: &aEnable"));
-        }else {
-            ticketLore.add(Utility.colorize("&7Toggle: &cDisable"));
-        }
-        inventory.setItem(49, Utility.createGUIItem("&3&lNotifications", ticketLore, Material.BOOK));
         inventory.setItem(inventory.getSize() - 1, Utility.createGUIItem("&c&lBack", Collections.singletonList("Return to the main menu"), Material.BARRIER));
         return;
     }
@@ -178,7 +171,7 @@ public class Tickets {
                     inventory.setItem(51, Utility.createGUIItem("&3&lNext", Material.ENDER_PEARL));
                 }
                 List<String> ticketLore = new ArrayList<>();
-                if(user.ticketNotification()) {
+                if(user.ticket()) {
                     ticketLore.add(Utility.colorize("&7Toggle: &aEnable"));
                 }else {
                     ticketLore.add(Utility.colorize("&7Toggle: &cDisable"));
@@ -261,7 +254,7 @@ public class Tickets {
                 inventory.setItem(50, Utility.createGUIItem("&3&lPrev", Material.ENDER_PEARL));
             }
             List<String> ticketLore = new ArrayList<>();
-            if(user.ticketNotification()) {
+            if(user.ticket()) {
                 ticketLore.add(Utility.colorize("&7Toggle: &aEnable"));
             }else {
                 ticketLore.add(Utility.colorize("&7Toggle: &cDisable"));

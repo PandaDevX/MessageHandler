@@ -24,10 +24,7 @@ public class TicketsClick implements Listener {
         if(e.getCurrentItem() == null) return;
         if(e.getCurrentItem().getItemMeta() == null) return;
         if (e.getClickedInventory() == null) return;
-        int page = 0;
-        if(e.getSlot() == 4) {
-            page =Integer.parseInt(Utility.stripColor(e.getClickedInventory().getItem(4).getItemMeta().getLore().get(0).split(" ")[1]));
-        }
+        int page = Integer.parseInt(Utility.stripColor(e.getClickedInventory().getItem(4).getItemMeta().getLore().get(0).split(" ")[1]));
         String name = Utility.getItemName(e.getCurrentItem());
         Player player = (Player) e.getWhoClicked();
         User user = new User(player);
@@ -49,12 +46,6 @@ public class TicketsClick implements Listener {
         }
         if(Utility.stripColor(name).equalsIgnoreCase("tickets")
         || Utility.stripColor(name).equalsIgnoreCase("empty")) {
-            e.setCancelled(true);
-            return;
-        }
-        if(Utility.stripColor(name).equalsIgnoreCase("notifications")) {
-            user.toggleTicketNotification();
-            TicketMenuClick.tickets.setup(page);
             e.setCancelled(true);
             return;
         }

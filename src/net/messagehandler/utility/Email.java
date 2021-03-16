@@ -61,8 +61,8 @@ public class Email {
                 Player player = Bukkit.getPlayer(recipient);
                 if(player != null) {
                     User target = new User(player);
-                    if(target.emailNotification()) {
-                        target.sendTitle("&2&lEmail:&6" + senderName + " &eSent you an email");
+                    if(target.email()) {
+                        target.sendActionBarMessage("&6You have new email");
                     }
                 }
                 return true;

@@ -356,38 +356,28 @@ public class User {
         config.set(uuid.toString() + ".ignored_players", list);
         playerFile.save();
     }
-    public boolean ticketNotification() {
-        if(config.get(uuid.toString() + ".ticket_notification") == null) {
-            config.set(uuid.toString() + ".ticket_notification", true);
-            playerFile.save();
-            return true;
-        }
-        return config.getBoolean(uuid.toString() + ".ticket_notification");
+    public boolean ticket() {
+        return config.getBoolean(uuid.toString() + ".ticket", true);
     }
 
     public void toggleTicketNotification() {
-        if(ticketNotification())
-            config.set(uuid.toString() + ".ticket_notification", false);
+        if(ticket())
+            config.set(uuid.toString() + ".ticket", false);
         else
-            config.set(uuid.toString() + ".ticket_notification", true);
+            config.set(uuid.toString() + ".ticket", true);
         playerFile.save();
 
     }
 
-    public boolean emailNotification() {
-        if(config.get(uuid.toString() + ".email_notification") == null) {
-            config.set(uuid.toString() + ".email_notification", true);
-            playerFile.save();
-            return true;
-        }
-        return config.getBoolean(uuid.toString() + ".email_notification");
+    public boolean email() {
+        return config.getBoolean(uuid.toString() + ".email", true);
     }
 
     public void toggleEmailNotification() {
-        if(emailNotification())
-            config.set(uuid.toString() + ".email_notification", false);
+        if(email())
+            config.set(uuid.toString() + ".email", false);
         else
-            config.set(uuid.toString() + ".email_notification", true);
+            config.set(uuid.toString() + ".email", true);
         playerFile.save();
 
     }
@@ -497,26 +487,22 @@ public class User {
         return finalList;
     }
 
-    public void togglePrivateMessage(boolean enable) {
-        if(enable) {
-            if(pm()) return;
+    public void togglePrivateMessage() {
+        if(pm()) {
+            config.set(uuid.toString() + ".pm", false);
+        } else {
             config.set(uuid.toString() + ".pm", true);
-            playerFile.save();
-            return;
         }
-        if(!pm()) return;
-        config.set(uuid.toString() + ".pm", false);
+        playerFile.save();
     }
 
-    public void toggleChat(boolean enable) {
-        if(enable) {
-            if(chat()) return;
+    public void toggleChat() {
+        if(chat()) {
+            config.set(uuid.toString() + ".chat", false);
+        } else {
             config.set(uuid.toString() + ".chat", true);
-            playerFile.save();
-            return;
         }
-        if(!chat()) return;
-        config.set(uuid.toString() + ".chat", false);
+        playerFile.save();
     }
 
     public List<String> getGroupsInvolved() {
@@ -637,6 +623,18 @@ public class User {
         return config.get(uuid.toString() + ".prefix") != null;
     }
 
+    public boolean hasCustomNameTag() {
+        return config.get(uuid.toString() + ".nametag") != null;
+    }
+
+    public String[] getNameTag() {
+        String[] nameTag = new String[3];
+        nameTag[0] = config.getString(uuid.toString() + ".nametag.prefix");
+        nameTag[1] = config.getString(uuid.toString() + ".nametag.color");
+        nameTag[2] = config.getString(uuid.toString() + ".nametag.suffix");
+        return nameTag;
+    }
+
     public String getPrefix() {
         String group = VaultHook.getPlayerGroup(player);
         if(hasCustomPrefix()) {
@@ -655,8 +653,26 @@ public class User {
         return VaultHook.getPlayerPrefix(player) != null ? VaultHook.getPlayerPrefix(player) : "";
     }
 
+    public void setPrefix(String prefix) {
+        config.set(uuid.toString() + ".prefix", prefix);
+        playerFile.save();
+    }
+
+    public void setSuffx(String suffix) {
+        config.set(uuid.toString() + ".suffix", suffix);
+        playerFile.save();
+    }
+
+    public boolean hasCustomSuffix() {
+        return config.get(uuid.toString() + ".suffix") != null;
+    }
+
     public String getSuffix() {
         String group = VaultHook.getPlayerGroup(player);
+        if(hasCustomSuffix()) {
+            VaultHook.setPrefix(player, config.getString(uuid.toString() + ".suffix"));
+            return VaultHook.getPlayerPrefix(player) != null ? VaultHook.getPlayerPrefix(player) : "";
+        }
         if(group.equals("")) {
             VaultHook.setSuffix(player, MessageHandler.getInstance().getConfig().getString("Chat Format.Default.Suffix"));
             return VaultHook.getPlayerSuffix(player) != null ? VaultHook.getPlayerSuffix(player) : "";

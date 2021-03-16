@@ -4,6 +4,7 @@ import net.messagehandler.MessageHandler;
 import net.messagehandler.listeners.inventory.email.Mail;
 import net.messagehandler.listeners.inventory.groups.GroupChat;
 import net.messagehandler.listeners.inventory.players.Online;
+import net.messagehandler.listeners.inventory.players.Preference;
 import net.messagehandler.listeners.inventory.players.Staffs;
 import net.messagehandler.listeners.inventory.ticket.TicketMenu;
 import net.messagehandler.listeners.inventory.words.BannedWords;
@@ -43,12 +44,12 @@ public class MenuClick implements Listener {
             case "Ticket":
                 e.setCancelled(true);
                 TicketMenu menu = new TicketMenu(user);
-                if(e.getClick() == ClickType.SHIFT_LEFT && user.hasPermission("messagehandler.inventory.ticket.admin")) {
+                if(e.getClick() == ClickType.SHIFT_LEFT && user.hasPermission("messagehandler.gui.ticketadmin")) {
                     menu.setup("admin");
                     menu.openInventory();
                     return;
                 }
-                if(!e.getWhoClicked().hasPermission("messagehandler.inventory.ticket")) {
+                if(!e.getWhoClicked().hasPermission("messagehandler.gui.ticket")) {
                     break;
                 }
                 menu.setup("player");
@@ -56,7 +57,7 @@ public class MenuClick implements Listener {
                 break;
             case "eMail":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.inventory.mail")) {
+                if(!e.getWhoClicked().hasPermission("messagehandler.gui.email")) {
                     break;
                 }
                 Mail mail = new Mail(user);
@@ -65,7 +66,7 @@ public class MenuClick implements Listener {
                 break;
             case "GroupChat":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.inventory.groupchat")) {
+                if(!e.getWhoClicked().hasPermission("messagehandler.gui.groupchat")) {
                     break;
                 }
                 groupChat = new GroupChat(user);
@@ -74,7 +75,7 @@ public class MenuClick implements Listener {
                 break;
             case "Online":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.inventory.online")) {
+                if(!e.getWhoClicked().hasPermission("messagehandler.gui.online")) {
                     break;
                 }
                 online = new Online(user);
@@ -83,7 +84,7 @@ public class MenuClick implements Listener {
                 break;
             case "Staffs":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.inventory.staffs")) {
+                if(!e.getWhoClicked().hasPermission("messagehandler.gui.staffs")) {
                     break;
                 }
                 staff = new Staffs(user);
@@ -96,6 +97,9 @@ public class MenuClick implements Listener {
                 break;
             case "Banned Words":
                 e.setCancelled(true);
+                if(!e.getWhoClicked().hasPermission("messagehandler.gui.bannedwords")) {
+                    break;
+                }
                 bannedWords = new BannedWords(user);
                 bannedWords.setup(1);
                 bannedWords.open();
@@ -105,6 +109,16 @@ public class MenuClick implements Listener {
                 user.getPlayer().closeInventory();
                 user.sendMessage("&6MessageHandler: &fv" + MessageHandler.getInstance().getDescription().getVersion());
                 user.sendMessage("&6Author: &f" + MessageHandler.getInstance().getDescription().getAuthors().get(0));
+                user.sendMessage("&6/messagehandler reload: &fto reload configurations");
+                break;
+            case "Your Preference":
+                e.setCancelled(true);
+                if(!e.getWhoClicked().hasPermission("messagehandler.gui.chat")) {
+                    break;
+                }
+                Preference preference = new Preference(user);
+                preference.setup();
+                preference.openInventory();
                 break;
             default:
                 e.setCancelled(true);

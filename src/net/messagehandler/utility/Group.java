@@ -35,6 +35,11 @@ public class Group {
         return count;
     }
 
+    public void disband() {
+        config.set("groups." + name, null);
+        util.save();
+    }
+
     public List<String> getMembers() {
         List<String> list = new ArrayList<>();
         if(config.get("groups." + name + ".members") == null) {

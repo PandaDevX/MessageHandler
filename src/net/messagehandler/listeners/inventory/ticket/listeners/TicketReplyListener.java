@@ -41,7 +41,7 @@ public class TicketReplyListener implements Listener {
             Player target = Bukkit.getPlayerExact(config.getString("tickets." + DataManager.ticketToReply.get(user.getUuid()) + ".owner.name"));
             if(target == null) return;
             User targ = new User(target);
-            if(targ.ticketNotification()) {
+            if(targ.ticket()) {
                 if (!user.getUuid().equals(targ.getUuid())) {
                     targ.sendTitle(Utility.getPrefix() + ":&bYou got a new reply for your ticket id &6" + DataManager.ticketToReply.get(user.getUuid()));
                 }
@@ -58,7 +58,7 @@ public class TicketReplyListener implements Listener {
                 if(adm == null) continue;
                 User ad = new User(adm);
                 if(user.getName().equals(ad.getName())) continue;
-                if(!ad.ticketNotification()) continue;
+                if(!ad.ticket()) continue;
                 ad.sendTitle(Utility.getPrefix() + ":&bYou got a reply from ticket assigned to you");
             }
         }

@@ -26,7 +26,6 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.*;
 import net.md_5.bungee.api.ChatColor;
-
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -541,13 +540,8 @@ public class Utility {
     }
 
     public static void removeAllNameTag() {
-        ScoreboardManager manager = Bukkit.getScoreboardManager();
-        Scoreboard board = manager.getMainScoreboard();
         for(Player player : Bukkit.getOnlinePlayers()) {
-            Team currentTeam = board.getPlayerTeam(player);
-            if(currentTeam != null) {
-                currentTeam.removePlayer(player);
-            }
+            player.setPlayerListName(null);
         }
     }
 
@@ -630,6 +624,14 @@ public class Utility {
                 ex.printStackTrace();
             }
             user.warn(MessageHandler.getInstance().getConfig().getString("Anti Swear.Warn", "Swearing"), "Console");
+
+            FileConfiguration wordConfig = Utility.getConfigByFile("settings/words.yml", FileUtilType.DEFAULT);
+            if(wordConfig.getBoolean("economy.enable")) {
+                if(VaultHook.withdrawMoney(user.getPlayer(), wordConfig.getDouble("economy.cost"))) {
+                    DecimalFormat format = new DecimalFormat("#,###");
+                    user.sendActionBarMessage("&cYou have been penalized: &f(&c-&f) &f" + wordConfig.getString("economy.sign") + format.format(wordConfig.getDouble("economy.cost")));
+                }
+            }
         }
         return found;
     }
@@ -677,19 +679,6 @@ public class Utility {
         }
     }
 
-    public static int HPTask() {
-        return Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(MessageHandler.getInstance(),
-                new Runnable() {
-                    public void run() {
-                        for (Player player : Bukkit.getOnlinePlayers()) {
-                            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Utility.colorize("&cHP: &a"
-                                    + (int) player.getHealth() + " / " + (int) player.getMaxHealth())));
-                        }
-                    }
-                }, 0, 1);
-    }
-
-
     public static void reloadNameTag(MessageHandler plugin) {
         if(plugin.getConfig().getBoolean("Custom NameTag.Enable")) {
             ScoreboardManager manager = Bukkit.getScoreboardManager();
@@ -697,9 +686,9 @@ public class Utility {
             if(plugin.getConfig().getBoolean("Custom.NameTag.Show Player Health")) {
                 if(board.getObjective("health") != null)
                     board.getObjective("health").unregister();
-                    Objective objective = board.registerNewObjective("health", "health");
-                    objective.setDisplayName(colorize("&c&l❤"));
-                    objective.setDisplaySlot(DisplaySlot.BELOW_NAME);
+                Objective objective = board.registerNewObjective("health", "health");
+                objective.setDisplayName(colorize("&c&l❤"));
+                objective.setDisplaySlot(DisplaySlot.BELOW_NAME);
             }
 
             for(Player player : Bukkit.getOnlinePlayers()) {

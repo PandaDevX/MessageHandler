@@ -125,7 +125,9 @@ public class EmailSendListener implements Listener {
                             }
                         }.runTaskLater(MessageHandler.getInstance(), 60L);
                         if(email.hasAttachments()) {
-                            user.getPlayer().getInventory().addItem(email.getAttachments());
+                            for(int i = 0; i < email.getAttachments().length; i++) {
+                                user.getPlayer().getInventory().addItem(email.getAttachments()[i]);
+                            }
                         }
                     }
                 }

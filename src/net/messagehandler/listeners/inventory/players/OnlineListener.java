@@ -5,6 +5,7 @@ import net.messagehandler.listeners.inventory.MenuClick;
 import net.messagehandler.utility.DataManager;
 import net.messagehandler.utility.User;
 import net.messagehandler.utility.Utility;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,10 +28,6 @@ public class OnlineListener implements Listener {
         String name = Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
 
         e.setCancelled(true);
-        if(name.equals(playerName)) {
-          // your preference
-          return;
-        }
         if(name.equalsIgnoreCase("Next")) {
             if((MenuClick.online.getMaxPage() - 1) == page) {
                 e.getClickedInventory().setItem(e.getSlot(), null);
@@ -49,6 +46,13 @@ public class OnlineListener implements Listener {
             MainPage mainPage = new MainPage();
             mainPage.setup(user.getPlayer());
             user.getPlayer().openInventory(mainPage.getInventory());
+            return;
         }
+        Player toShow = Bukkit.getPlayerExact(name);
+        User toShowUser = new User(toShow);
+        Preference preference = new Preference(toShowUser);
+        preference.setup();
+        preference.openInventory(user);
+        return;
     }
 }

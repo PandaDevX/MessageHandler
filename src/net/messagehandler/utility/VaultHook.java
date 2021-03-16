@@ -28,7 +28,7 @@ public class VaultHook {
         return true;
     }
 
-    public boolean withdrawMoney(Player player, int amount) {
+    public static boolean withdrawMoney(Player player, double amount) {
         return (economy != null && economy.withdrawPlayer(player, amount).transactionSuccess());
     }
 
@@ -59,6 +59,10 @@ public class VaultHook {
 
     public static String getPlayerGroup(Player player) {
         return permission.getPrimaryGroup(player) != null ? permission.getPrimaryGroup(player) : "";
+    }
+
+    public static boolean isInGroup(String group, Player player) {
+        return getPlayerGroup(player).equalsIgnoreCase(group);
     }
 
     public static double getPlayerBalance(Player player) {

@@ -9,6 +9,27 @@ commands:
   messagehandler:
     description: Main command
     permission: messagehandler.help
+  bannedwords:
+    description: Check all of the banned words
+    permission: messagehandler.gui.bannedwords
+  chat:
+    description: Toggle spam with your chat box
+    permission: messagehandler.gui.chat
+  groupchat:
+    description: Setup groupchat or chat channels
+    permission: messagehandler.gui.groupchat
+  email:
+    description: To send an email
+    permission: messagehandler.gui.email
+  ticket:
+    description: To report unwanted things
+    permission: messagehandler.gui.ticket
+  online:
+    description: Show all players online
+    permission: messagehandler.gui.online
+  staffs:
+    description: Show all admins
+    permission: messagehandler.gui.staffs
   warn:
     description: warn a player
     permission: messagehandler.warn

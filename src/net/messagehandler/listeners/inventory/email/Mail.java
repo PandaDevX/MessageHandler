@@ -19,10 +19,11 @@ public class Mail {
     Inventory inventory = Bukkit.createInventory(null, InventoryType.HOPPER, Utility.colorize("&6&lEmail"));
 
     public void setup() {
-        inventory.setItem(0, Utility.createGUIItem("&3&lSend", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fSend an email")), Material.ENDER_CHEST));
-        inventory.setItem(1, Utility.createGUIItem("&3&lInbox", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fCheck the inbox")), Material.TRIPWIRE_HOOK));
-        inventory.setItem(2, Utility.createGUIItem("&3&lNotification", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fToggle email notification")), Material.BOW));
-        inventory.setItem(4, Utility.createGUIItem("&c&lBack", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fGo back to main menu")), Material.BARRIER));
+        for(int i = 0; i < inventory.getSize(); i++) {
+            inventory.setItem(i, Utility.createGUIItem(" ", Material.BLACK_STAINED_GLASS_PANE));
+        }
+        inventory.setItem(1, Utility.createGUIItem("&3&lSend", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fSend an email")), Material.ENDER_CHEST));
+        inventory.setItem(3, Utility.createGUIItem("&3&lInbox", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fCheck the inbox")), Material.TRIPWIRE_HOOK));
     }
 
     public void openEmail() {

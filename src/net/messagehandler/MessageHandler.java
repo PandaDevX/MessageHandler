@@ -1,6 +1,7 @@
 package net.messagehandler;
 
 import net.messagehandler.command.*;
+import net.messagehandler.command.gui.*;
 import net.messagehandler.listeners.anvil.AnvilColorListener;
 import net.messagehandler.listeners.anvil.AnvilFilterListener;
 import net.messagehandler.listeners.book.BookColorListener;
@@ -10,15 +11,13 @@ import net.messagehandler.listeners.chat.motd.JoinSendMessageListener;
 import net.messagehandler.listeners.extra.ExtraListener;
 import net.messagehandler.listeners.inventory.MenuClick;
 import net.messagehandler.listeners.inventory.email.EmailViewer;
-import net.messagehandler.listeners.inventory.email.listeners.EmailAttachmentListener;
-import net.messagehandler.listeners.inventory.email.listeners.EmailLogoListener;
-import net.messagehandler.listeners.inventory.email.listeners.EmailSendListener;
-import net.messagehandler.listeners.inventory.email.listeners.MailListener;
+import net.messagehandler.listeners.inventory.email.listeners.*;
 import net.messagehandler.listeners.inventory.groups.listeners.GroupChatClick;
 import net.messagehandler.listeners.inventory.groups.listeners.GroupClickListener;
 import net.messagehandler.listeners.inventory.groups.listeners.GroupsClick;
 import net.messagehandler.listeners.inventory.groups.listeners.MemberClick;
 import net.messagehandler.listeners.inventory.players.OnlineListener;
+import net.messagehandler.listeners.inventory.players.PreferenceListener;
 import net.messagehandler.listeners.inventory.players.StaffsListener;
 import net.messagehandler.listeners.inventory.ticket.listeners.*;
 import net.messagehandler.listeners.afk.GodModeEvent;
@@ -182,11 +181,13 @@ public class MessageHandler extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MailListener(), this);
         getServer().getPluginManager().registerEvents(new EmailSendListener(), this);
         getServer().getPluginManager().registerEvents(new EmailViewer(), this);
+        getServer().getPluginManager().registerEvents(new EmailInboxListener(), this);
     }
 
     void registerOnlineListener() {
         getServer().getPluginManager().registerEvents(new OnlineListener(), this);
         getServer().getPluginManager().registerEvents(new StaffsListener(), this);
+        getServer().getPluginManager().registerEvents(new PreferenceListener(), this);
         registerBannedWords();
     }
 
@@ -245,6 +246,14 @@ public class MessageHandler extends JavaPlugin {
         this.getCommand("ignoreall").setExecutor(new CommandIgnoreAll(this));
         this.getCommand("sendtitle").setExecutor(new CommandSendTitle(this));
         this.getCommand("warn").setExecutor(new CommandWarn(this));
+        this.getCommand("help").setExecutor(new CommandHelp(this));
+        this.getCommand("online").setExecutor(new CommandOnlineInventory());
+        this.getCommand("staffs").setExecutor(new CommandStaffsInventory());
+        this.getCommand("bannedwords").setExecutor(new CommandBannedWordsInventory());
+        this.getCommand("chat").setExecutor(new CommandChatInventory());
+        this.getCommand("groupchat").setExecutor(new CommandGroupChatInventory());
+        this.getCommand("email").setExecutor(new CommandEmailInventory());
+        this.getCommand("ticket").setExecutor(new CommandTicketInventory());
     }
 
 

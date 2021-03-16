@@ -43,6 +43,7 @@ public class GroupClickListener implements Listener {
                     members = new Members(user, key);
                     members.setup(1);
                     members.open();
+                    DataManager.groupClicked.remove(user.getUuid());
                     break;
                 case "Join Conversation":
                     user.setChannel(key);
@@ -50,17 +51,31 @@ public class GroupClickListener implements Listener {
                     user.sendTitle("&2&lGroups:&eSuccessfully joined to &c" + key + " &echat channel");
                     user.sendMessage("&2&lGroups>> &eType: LEAVE " + key + " &eto leave the channel");
                     Utility.reloadNameTag(MessageHandler.getInstance());
+                    DataManager.groupClicked.remove(user.getUuid());
                     break;
                 case "Leave":
                     Group group = new Group(key);
                     user.getPlayer().closeInventory();
-                    if(group.remove(user.getName())) {
-                        user.sendTitle("&2&lGroups:&eSuccessfully left the channel &c" + key);
+                    if(group.getOwner().equals(user.getName())) {
+                        group.disband();
+                        user.sendTitle("&2&lGroups:&eSuccessfully disband the channel &c" + key);
+                    }else {
+                        if(group.remove(user.getName())) {
+                            user.sendTitle("&2&lGroups:&eSuccessfully left the channel &c" + key);
+                        }
                     }
                     if(user.isInChannel() && user.getChannel().equals(key)) {
                         user.removeChannel();
                         Utility.reloadNameTag(MessageHandler.getInstance());
                     }
+                    DataManager.groupClicked.remove(user.getUuid());
+                    break;
+
+                case "Disband":
+                    Group ownedGroup = new Group(key);
+                    ownedGroup.disband();
+                    user.sendTitle("&2&lGroups:&eSuccessfully disband the channel &c" + key);
+                    user.getPlayer().closeInventory();
                     break;
                 case "Back":
                     Groups groups = new Groups(user);

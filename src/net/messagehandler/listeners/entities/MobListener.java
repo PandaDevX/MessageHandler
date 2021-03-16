@@ -145,6 +145,7 @@ public class MobListener implements Listener {
         int health = (int)mob.getHealth();
         int maxHealth = (int)mob.getMaxHealth();
         entity.setCustomName(Utility.colorize("&c" + entity.getName() + " &a" + health + " / " + maxHealth));
+        entity.setCustomNameVisible(true);
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
