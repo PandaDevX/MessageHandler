@@ -90,6 +90,7 @@ public class GroupClickListener implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
         if(!DataManager.groupClicked.containsKey(e.getPlayer().getUniqueId())) return;
+        if(DataManager.groupCreators.contains(e.getPlayer().getUniqueId())) return;
         FileUtil util = new FileUtil(MessageHandler.getInstance(), "groupchats.yml", FileUtilType.DATA);
         User user = new User(e.getPlayer());
         FileConfiguration config = util.get();
@@ -107,9 +108,9 @@ public class GroupClickListener implements Listener {
                 user.sendTitle("&2&lGroups:&eWrong password");
             }
             e.setCancelled(true);
-            return;
+        } else {
+            e.setCancelled(true);
+            user.sendTitle("&2&lGroups:&eSuccessfully cancel joining group");
         }
-        e.setCancelled(true);
-        user.sendTitle("&2&lGroups:&eSuccessfully cancel joining group");
     }
 }

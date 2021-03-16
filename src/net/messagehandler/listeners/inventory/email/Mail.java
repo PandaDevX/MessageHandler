@@ -23,6 +23,7 @@ public class Mail {
             inventory.setItem(i, Utility.createGUIItem(" ", Material.BLACK_STAINED_GLASS_PANE));
         }
         inventory.setItem(1, Utility.createGUIItem("&3&lSend", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fSend an email")), Material.ENDER_CHEST));
+        inventory.setItem(2, Utility.createGUIItem("&3&lClear", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fClear all email")), Material.TNT));
         inventory.setItem(3, Utility.createGUIItem("&3&lInbox", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fCheck the inbox")), Material.TRIPWIRE_HOOK));
     }
 

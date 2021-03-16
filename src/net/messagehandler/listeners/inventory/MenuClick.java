@@ -3,6 +3,7 @@ package net.messagehandler.listeners.inventory;
 import net.messagehandler.MessageHandler;
 import net.messagehandler.listeners.inventory.email.Mail;
 import net.messagehandler.listeners.inventory.groups.GroupChat;
+import net.messagehandler.listeners.inventory.players.Customization;
 import net.messagehandler.listeners.inventory.players.Online;
 import net.messagehandler.listeners.inventory.players.Preference;
 import net.messagehandler.listeners.inventory.players.Staffs;
@@ -110,6 +111,15 @@ public class MenuClick implements Listener {
                 user.sendMessage("&6MessageHandler: &fv" + MessageHandler.getInstance().getDescription().getVersion());
                 user.sendMessage("&6Author: &f" + MessageHandler.getInstance().getDescription().getAuthors().get(0));
                 user.sendMessage("&6/messagehandler reload: &fto reload configurations");
+                break;
+            case "Customization":
+                e.setCancelled(true);
+                if(!e.getWhoClicked().hasPermission("messagehandler.gui.customization")) {
+                    break;
+                }
+                Customization customization = new Customization(user);
+                customization.setup();
+                customization.open();
                 break;
             case "Your Preference":
                 e.setCancelled(true);

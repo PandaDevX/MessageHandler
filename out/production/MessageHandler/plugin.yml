@@ -9,27 +9,35 @@ commands:
   messagehandler:
     description: Main command
     permission: messagehandler.help
+    aliases: [ml]
   bannedwords:
     description: Check all of the banned words
     permission: messagehandler.gui.bannedwords
+    aliases: [words, bwords, bw]
   chat:
     description: Toggle spam with your chat box
     permission: messagehandler.gui.chat
+    aliases: [preference, pref]
   groupchat:
     description: Setup groupchat or chat channels
     permission: messagehandler.gui.groupchat
+    aliases: [gc, groups]
   email:
     description: To send an email
     permission: messagehandler.gui.email
+    aliases: [mail]
   ticket:
     description: To report unwanted things
     permission: messagehandler.gui.ticket
+    aliases: [t]
   online:
     description: Show all players online
     permission: messagehandler.gui.online
+    aliases: [ol]
   staffs:
     description: Show all admins
     permission: messagehandler.gui.staffs
+    aliases: [staff]
   warn:
     description: warn a player
     permission: messagehandler.warn
@@ -48,18 +56,23 @@ commands:
   vanish:
     description: vanish
     permission: messagehandler.vanish
+    aliases: [v]
   broadcast:
     description: broadcast message
     permission: messagehandler.broadcast
+    aliases: [bcast, b]
   nickname:
     description: change nickname
     permission: messagehandler.nickanme
+    aliases: [nick]
   clearchat:
     description: clears chat
     permission: messagehandler.clearchat
+    aliases: [cc]
   realname:
     description: real name of target
     permission: messagehandler.realname
+    aliases: [who, rname]
   chatspy:
     description: spy chats
     permission: messagehandler.chatspy
@@ -69,9 +82,11 @@ commands:
   whisper:
     description: send message to player
     permission: messagehandler.whisper
+    aliases: [msg, m, w]
   reply:
     description: reply to a player
     permission: messagehandler.reply
+    aliases: [r]
   ignore:
     description: ignores a player
     permission: messagehandler.ignore
@@ -81,6 +96,10 @@ commands:
   sendtitle:
     description: send title to a player
     permission: messagehandler.sendtitle
+    aliases: [title]
+  customization:
+    description: customize everything
+    aliases: [custom, customize]
 
 permissions:
   messagehandler.admin:

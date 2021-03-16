@@ -9,6 +9,7 @@ import net.messagehandler.utility.DataManager;
 import net.messagehandler.utility.Email;
 import net.messagehandler.utility.User;
 import net.messagehandler.utility.Utility;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -112,6 +113,13 @@ public class EmailSendListener implements Listener {
                                 viewer.open();
                             }
                         }.runTaskLater(MessageHandler.getInstance(), 60L);
+                        Player recipient = Bukkit.getPlayerExact(email.getRecipient());
+                        if(recipient != null) {
+                            User target = new User(recipient);
+                            if(target.email()) {
+                                target.sendActionBarMessage("&6You receive a new email &e/mail &6to check");
+                            }
+                        }
                     } else {
                         user.getPlayer().closeInventory();
                         user.sendTitle("&2&lEmail:&eUnsuccessful please wait a while for the reasons");

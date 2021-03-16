@@ -36,16 +36,14 @@ public class TicketReplyListener implements Listener {
             e.setCancelled(true);
             config.set("tickets." + DataManager.ticketToReply.get(user.getUuid()) + ".replies", replies);
             ticketFile.save();
-            DataManager.ticketWhoReply.remove(DataManager.ticketToReply.get(user.getUuid()));
-            DataManager.ticketToReply.remove(user.getUuid());
             Player target = Bukkit.getPlayerExact(config.getString("tickets." + DataManager.ticketToReply.get(user.getUuid()) + ".owner.name"));
             if(target == null) return;
             User targ = new User(target);
             if(targ.ticket()) {
-                if (!user.getUuid().equals(targ.getUuid())) {
-                    targ.sendTitle(Utility.getPrefix() + ":&bYou got a new reply for your ticket id &6" + DataManager.ticketToReply.get(user.getUuid()));
-                }
+                targ.sendActionBarMessage("&6You got a new reply to your ticket &e/ticket &6to check");
             }
+            DataManager.ticketWhoReply.remove(DataManager.ticketToReply.get(user.getUuid()));
+            DataManager.ticketToReply.remove(user.getUuid());
             return;
         }
         replies.add((DataManager.ticketWhoReply.get(DataManager.ticketToReply.get(user.getUuid())) + "," + e.getMessage()).trim());
@@ -61,6 +59,12 @@ public class TicketReplyListener implements Listener {
                 if(!ad.ticket()) continue;
                 ad.sendTitle(Utility.getPrefix() + ":&bYou got a reply from ticket assigned to you");
             }
+        }
+        Player target = Bukkit.getPlayerExact(config.getString("tickets." + DataManager.ticketToReply.get(user.getUuid()) + ".owner.name"));
+        if(target == null) return;
+        User targ = new User(target);
+        if(targ.ticket()) {
+            targ.sendActionBarMessage("&6You got a new reply to your ticket &e/ticket &6to check");
         }
         config.set("tickets." + DataManager.ticketToReply.get(user.getUuid()) + ".replies", replies);
         ticketFile.save();

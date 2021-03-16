@@ -25,8 +25,6 @@ public class GroupChat {
         inventory.setItem(1, Utility.createGUIItem("&3&lGroups",
                 Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fList of all the group chats")), Material.GOLDEN_AXE));
         inventory.setItem(2, Utility.getPlayerHead(user.getName(), Utility.colorize("&3&lYour Groups"), Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fCheck group chats you are in"))));
-        inventory.setItem(inventory.getSize() - 1, Utility.createGUIItem("&c&lBack",
-                Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fGo back to the main menu")), Material.BARRIER));
 
     }
 

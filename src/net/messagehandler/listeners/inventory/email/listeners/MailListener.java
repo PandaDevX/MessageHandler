@@ -1,8 +1,11 @@
 package net.messagehandler.listeners.inventory.email.listeners;
 
+import net.messagehandler.MessageHandler;
 import net.messagehandler.listeners.inventory.email.EmailInbox;
 import net.messagehandler.listeners.inventory.MainPage;
 import net.messagehandler.listeners.inventory.email.EmailSend;
+import net.messagehandler.utility.FileUtil;
+import net.messagehandler.utility.FileUtilType;
 import net.messagehandler.utility.User;
 import net.messagehandler.utility.Utility;
 import org.bukkit.ChatColor;
@@ -41,6 +44,18 @@ public class MailListener implements Listener {
                 inbox = new EmailInbox(user);
                 inbox.setup(1);
                 inbox.open();
+                break;
+            case "Clear":
+                FileUtil util = new FileUtil(MessageHandler.getInstance(), "playerdata.yml", FileUtilType.DATA);
+                if(!user.hasEmptyEmail()) {
+                    util.get().set(user.getUuid().toString() + ".mail", null);
+                    util.save();
+                    user.getPlayer().closeInventory();
+                    user.sendActionBarMessage("&aSuccessfully deleted all mails");
+                } else {
+                    user.getPlayer().closeInventory();
+                    user.sendActionBarMessage("&aYou already have empty email");
+                }
                 break;
             case "Back":
                 MainPage page = new MainPage();

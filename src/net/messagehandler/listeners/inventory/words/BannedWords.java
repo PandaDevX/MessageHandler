@@ -47,7 +47,6 @@ public class BannedWords {
         if(page > 1) {
             inventory.setItem(50, Utility.createGUIItem("&3&lPrev", Material.ENDER_PEARL));
         }
-        inventory.setItem(inventory.getSize() - 1, Utility.createGUIItem("&c&lBack", Arrays.asList("", Utility.colorize("&7Description: &fTo go back to menu")), Material.BARRIER));
     }
 
     public void open() {

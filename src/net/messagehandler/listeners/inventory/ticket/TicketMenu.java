@@ -22,7 +22,6 @@ public class TicketMenu {
         if(view.equals("player")) {
             inventory.setItem(0, Utility.createGUIItem("&3&lCreate", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fCreate a new ticket")), Material.ARMOR_STAND));
             inventory.setItem(1, Utility.createGUIItem("&3&lTickets", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fShow all your tickets")), Material.STONE_SLAB));
-            inventory.setItem(inventory.getSize() - 1, Utility.createGUIItem("&3&lBack", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fGo back to main menu")), Material.BARRIER));
             return;
         }
         if(view.equals("admin")) {
@@ -31,7 +30,6 @@ public class TicketMenu {
             inventory.setItem(2, Utility.getPlayerHead(user.getName(),
                     Utility.colorize("&3&lAssigned Tickets"),
                     Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fCheck all tickets assigned to you"))));
-            inventory.setItem(inventory.getSize() - 1, Utility.createGUIItem("&3&lBack", Arrays.asList("", Utility.colorize("&7DESCRIPTION: &fGo back to main menu")), Material.BARRIER));
             return;
         }
         return;

@@ -16,9 +16,7 @@ import net.messagehandler.listeners.inventory.groups.listeners.GroupChatClick;
 import net.messagehandler.listeners.inventory.groups.listeners.GroupClickListener;
 import net.messagehandler.listeners.inventory.groups.listeners.GroupsClick;
 import net.messagehandler.listeners.inventory.groups.listeners.MemberClick;
-import net.messagehandler.listeners.inventory.players.OnlineListener;
-import net.messagehandler.listeners.inventory.players.PreferenceListener;
-import net.messagehandler.listeners.inventory.players.StaffsListener;
+import net.messagehandler.listeners.inventory.players.*;
 import net.messagehandler.listeners.inventory.ticket.listeners.*;
 import net.messagehandler.listeners.afk.GodModeEvent;
 import net.messagehandler.listeners.afk.PlayerMoveEvent;
@@ -69,6 +67,9 @@ public class MessageHandler extends JavaPlugin {
         }
         if(autoBroadcastFile.get().getBoolean("auto-broadcast-holo.enable")) {
             Utility.autoBroadcastHologram();
+        }
+        if(autoBroadcastFile.get().getBoolean("auto-broadcast-json.enable")) {
+            Utility.autoBroadcastJSON();
         }
         for(Player player : Bukkit.getOnlinePlayers()) {
             User user = new User(player);
@@ -188,6 +189,8 @@ public class MessageHandler extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnlineListener(), this);
         getServer().getPluginManager().registerEvents(new StaffsListener(), this);
         getServer().getPluginManager().registerEvents(new PreferenceListener(), this);
+        getServer().getPluginManager().registerEvents(new CustomizationListener(), this);
+        getServer().getPluginManager().registerEvents(new NameTagListener(), this);
         registerBannedWords();
     }
 
@@ -254,6 +257,7 @@ public class MessageHandler extends JavaPlugin {
         this.getCommand("groupchat").setExecutor(new CommandGroupChatInventory());
         this.getCommand("email").setExecutor(new CommandEmailInventory());
         this.getCommand("ticket").setExecutor(new CommandTicketInventory());
+        this.getCommand("customization").setExecutor(new CommandCustomizationInventory());
     }
 
 

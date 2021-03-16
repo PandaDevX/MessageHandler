@@ -620,19 +620,37 @@ public class User {
     }
 
     public boolean hasCustomPrefix() {
-        return config.get(uuid.toString() + ".prefix") != null;
+        return (config.get(uuid.toString() + ".prefix") != null);
     }
 
     public boolean hasCustomNameTag() {
-        return config.get(uuid.toString() + ".nametag") != null;
+        if(config.get(uuid.toString() + ".nametag") == null) {
+            return false;
+        }
+        for(String nametag : getNameTag()) {
+            if(!nametag.equals("")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setNameTag(String type, String value) {
+        config.set(uuid.toString() + ".nametag." + type, value);
+        playerFile.save();
+        Utility.reloadNameTag(MessageHandler.getInstance());
     }
 
     public String[] getNameTag() {
-        String[] nameTag = new String[3];
-        nameTag[0] = config.getString(uuid.toString() + ".nametag.prefix");
-        nameTag[1] = config.getString(uuid.toString() + ".nametag.color");
-        nameTag[2] = config.getString(uuid.toString() + ".nametag.suffix");
+        String[] nameTag = {
+        config.getString(uuid.toString() + ".nametag.prefix", ""),
+        config.getString(uuid.toString() + ".nametag.color", ""),
+        config.getString(uuid.toString() + ".nametag.suffix", "") };
         return nameTag;
+    }
+
+    public boolean hasEmptyEmail() {
+        return config.get(uuid.toString() + ".mail") == null;
     }
 
     public String getPrefix() {

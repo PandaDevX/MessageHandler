@@ -9,8 +9,10 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.chat.ComponentSerializer;
 import net.messagehandler.MessageHandler;
 import net.messagehandler.utility.events.BroadcastHoloEvent;
+import net.minecraft.server.v1_16_R3.IChatBaseComponent;
 import org.bukkit.*;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -455,6 +457,28 @@ public class Utility {
         }.runTaskTimer(MessageHandler.getInstance(), 0L, 20L * Long.valueOf(interval));
     }
 
+    public static void autoBroadcastJSON() {
+        FileConfiguration config = Utility.getConfigByFile("settings/autobroadcast.yml", FileUtilType.DEFAULT);
+        int interval = parseInterval(config.getString("auto-broadcast-json.interval"));
+        List<String> messages = config.getStringList("auto-broadcast-json.messages");
+        new BukkitRunnable() {
+            int line = 0;
+            public void run() {
+                if(line >= messages.size()) {
+                    line = 0;
+                }
+                for(Player player : Bukkit.getOnlinePlayers()) {
+                    player.spigot().sendMessage(ComponentSerializer.parse(messages.get(line)));
+                }
+                }
+        }.runTaskTimer(MessageHandler.getInstance(), 0L, 20L * Long.valueOf(interval));
+    }
+
+    public static int getPlayTimeInSeconds(Player player) {
+        int seconds = player.getStatistic(Statistic.PLAY_ONE_MINUTE)/20;
+        return seconds;
+    }
+
     public static void autoBroadcastPerWorld() {
         FileConfiguration config = Utility.getConfigByFile("settings/autobroadcast.yml", FileUtilType.DEFAULT);
         int interval = parseInterval(config.getString("auto-broadcast-message.per-world.interval"));
@@ -696,10 +720,14 @@ public class Utility {
                 if(currentTeam != null)
                     currentTeam.removePlayer(player);
                 User user = new User(player);
-                if(user.hasData(DataType.NAMETAG) && !user.isAFK()){
+                if(user.hasCustomNameTag() && !user.isAFK()){
                     Team custom = board.getTeam(user.getName()) != null ? board.getTeam(user.getName()) : board.registerNewTeam(user.getName());
-                    custom.setPrefix(Utility.colorize(user.getData(DataType.NAMETAG)));
-                    custom.setColor(org.bukkit.ChatColor.valueOf(user.getData(DataType.NAMETAG_COLOR)));
+                    String p = !user.getNameTag()[0].equals("")? user.getNameTag()[0] : "";
+                    custom.setPrefix(p + " ");
+                    org.bukkit.ChatColor c = !user.getNameTag()[1].equals("") ? org.bukkit.ChatColor.valueOf(user.getNameTag()[1]) : org.bukkit.ChatColor.WHITE;
+                    custom.setColor(c);
+                    String s = !user.getNameTag()[1].equals("") ? user.getNameTag()[1] : "";
+                    custom.setSuffix(" " + s);
                     custom.setNameTagVisibility(NameTagVisibility.ALWAYS);
                     custom.addPlayer(user.getPlayer());
                     continue;

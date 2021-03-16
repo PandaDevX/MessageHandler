@@ -51,7 +51,6 @@ public class Staffs {
         if(page > 1) {
             inventory.setItem(config.getInt("Staffs.prev.slot") - 1, Utility.createGUIItem(config.getString("Staffs.prev.name"), Material.valueOf(config.getString("Staffs.prev.material"))));
         }
-        inventory.setItem(inventory.getSize() - 1, Utility.createGUIItem("&c&lBack", Collections.singletonList("Return to the main menu"), Material.BARRIER));
     }
 
 

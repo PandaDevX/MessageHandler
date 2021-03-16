@@ -71,4 +71,10 @@ public class DataManager {
      Rules
      */
     public static List<UUID> rulesPrompt = new ArrayList<>();
+
+    /*
+    this is for customization
+     */
+    public static HashMap<UUID, String> customization = new HashMap<>();
+    public static HashMap<UUID, String> customizationNT = new HashMap<>();
 }

@@ -65,7 +65,6 @@ public class Online {
         if(page > 1) {
             inventory.setItem(50, Utility.createGUIItem("&3&lPrev", Material.ENDER_PEARL));
         }
-        inventory.setItem(inventory.getSize() - 1, Utility.createGUIItem("&c&lBack", Collections.singletonList("Return to the main menu"), Material.BARRIER));
     }
 
 
