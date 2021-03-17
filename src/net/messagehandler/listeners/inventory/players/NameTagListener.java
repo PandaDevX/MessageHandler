@@ -24,16 +24,11 @@ public class NameTagListener implements Listener {
             switch(Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName())) {
                 case "Prefix":
                 case "Suffix":
+                case "Color":
                     e.setCancelled(true);
                     user.setNameTag(Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()).toLowerCase(), null);
                     user.getPlayer().closeInventory();
                     user.sendActionBarMessage("&aSuccessfully cleared " + Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
-                    break;
-                case "Color":
-                    /**
-                     * do something here...
-                     */
-                    e.setCancelled(true);
                     break;
                 default:
                     e.setCancelled(true);
@@ -42,12 +37,17 @@ public class NameTagListener implements Listener {
         } else {
             switch(Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName())) {
                 case "Prefix":
-                case "Color":
                 case "Suffix":
                     e.setCancelled(true);
                     DataManager.customizationNT.put(user.getUuid(), Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()).toLowerCase());
                     user.getPlayer().closeInventory();
                     user.sendTitle("&e&lNameTag:&fType your " + Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()) + " or type &ccancel &fto cancel", 30, 36000, 20);
+                    break;
+                case "Color":
+                    e.setCancelled(true);
+                    NameTagColors nameTagColors = new NameTagColors(user);
+                    nameTagColors.setup();
+                    nameTagColors.open();
                     break;
                 default:
                     e.setCancelled(true);
@@ -67,11 +67,11 @@ public class NameTagListener implements Listener {
             return;
         }
         e.setCancelled(true);
-        String value = e.getMessage();
+        String value = e.getMessage().length() > 16 ? e.getMessage().substring(0, 16) : e.getMessage();
         String key = DataManager.customizationNT.get(user.getUuid());
 
         user.setNameTag(key, value);
-        user.sendTitle(" : ");
+        user.sendTitle(" : ", 1, 1, 1);
         DataManager.customizationNT.remove(user.getUuid());
         NameTag nameTag = new NameTag(user);
         nameTag.setup();

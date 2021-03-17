@@ -77,4 +77,5 @@ public class DataManager {
      */
     public static HashMap<UUID, String> customization = new HashMap<>();
     public static HashMap<UUID, String> customizationNT = new HashMap<>();
+    public static HashMap<UUID, String> customizationChat = new HashMap<>();
 }

@@ -191,6 +191,8 @@ public class MessageHandler extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PreferenceListener(), this);
         getServer().getPluginManager().registerEvents(new CustomizationListener(), this);
         getServer().getPluginManager().registerEvents(new NameTagListener(), this);
+        getServer().getPluginManager().registerEvents(new ChatPrefixListener(), this);
+        getServer().getPluginManager().registerEvents(new NameTagColorsListener(), this);
         registerBannedWords();
     }
 

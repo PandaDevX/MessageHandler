@@ -653,6 +653,16 @@ public class User {
         return config.get(uuid.toString() + ".mail") == null;
     }
 
+    public void clearCustomPrefix() {
+        config.set(uuid.toString() + ".prefix", null);
+        playerFile.save();
+    }
+
+    public void clearCustomSuffix() {
+        config.set(uuid.toString() + ".suffix", null);
+        playerFile.save();
+    }
+
     public String getPrefix() {
         String group = VaultHook.getPlayerGroup(player);
         if(hasCustomPrefix()) {
@@ -688,8 +698,8 @@ public class User {
     public String getSuffix() {
         String group = VaultHook.getPlayerGroup(player);
         if(hasCustomSuffix()) {
-            VaultHook.setPrefix(player, config.getString(uuid.toString() + ".suffix"));
-            return VaultHook.getPlayerPrefix(player) != null ? VaultHook.getPlayerPrefix(player) : "";
+            VaultHook.setSuffix(player, config.getString(uuid.toString() + ".suffix"));
+            return VaultHook.getPlayerSuffix(player) != null ? VaultHook.getPlayerSuffix(player) : "";
         }
         if(group.equals("")) {
             VaultHook.setSuffix(player, MessageHandler.getInstance().getConfig().getString("Chat Format.Default.Suffix"));

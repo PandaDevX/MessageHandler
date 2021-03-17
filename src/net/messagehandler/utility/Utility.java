@@ -565,7 +565,7 @@ public class Utility {
 
     public static void removeAllNameTag() {
         for(Player player : Bukkit.getOnlinePlayers()) {
-            player.setPlayerListName(null);
+            removeNameTag(player);
         }
     }
 
@@ -723,11 +723,11 @@ public class Utility {
                 if(user.hasCustomNameTag() && !user.isAFK()){
                     Team custom = board.getTeam(user.getName()) != null ? board.getTeam(user.getName()) : board.registerNewTeam(user.getName());
                     String p = !user.getNameTag()[0].equals("")? user.getNameTag()[0] : "";
-                    custom.setPrefix(p + " ");
-                    org.bukkit.ChatColor c = !user.getNameTag()[1].equals("") ? org.bukkit.ChatColor.valueOf(user.getNameTag()[1]) : org.bukkit.ChatColor.WHITE;
+                    custom.setPrefix(Utility.colorize(p + " &r"));
+                    org.bukkit.ChatColor c = !user.getNameTag()[1].equals("") ? org.bukkit.ChatColor.valueOf(user.getNameTag()[1].toUpperCase().replace(" ", "_")) : org.bukkit.ChatColor.WHITE;
                     custom.setColor(c);
-                    String s = !user.getNameTag()[1].equals("") ? user.getNameTag()[1] : "";
-                    custom.setSuffix(" " + s);
+                    String s = !user.getNameTag()[2].equals("") ? user.getNameTag()[2] : "";
+                    custom.setSuffix(Utility.colorize("&r " + s));
                     custom.setNameTagVisibility(NameTagVisibility.ALWAYS);
                     custom.addPlayer(user.getPlayer());
                     continue;

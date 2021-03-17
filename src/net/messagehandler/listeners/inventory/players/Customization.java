@@ -32,6 +32,8 @@ public class Customization {
         if(user.hasCustomNameTag()) {
             String p = user.getNameTag()[0] != null ? user.getNameTag()[0] : "";
             String c = user.getNameTag()[1] != null ? user.getNameTag()[1] : "";
+            c = c.toUpperCase();
+            c = c.replace(" ", "_");
             String s = user.getNameTag()[2] != null ? user.getNameTag()[2] : "";
            if((c!= null) && (!c.equals(""))) {
                nameTag = Arrays.asList("", "&7Current: " + p + " &r" + ChatColor.valueOf(c) + user.getName() + " " + s, "", "&5CLICK &7To change", "&5RIGHT CLICK &7To clear");
@@ -46,6 +48,8 @@ public class Customization {
        }
        List<String> quitLore = Arrays.asList("", "&7Current: " + user.getLeaveMessage(), "", "&5CLICK &7To change", "&5RIGHT CLICK &7To clear");
        inventory.setItem(3, Utility.createGUIItem("&3&lQuit Message", Utility.colorizeList(quitLore, user.getPlayer()), Material.RED_STAINED_GLASS_PANE));
+       List<String> chat = Arrays.asList("", "&7Current: " + user.getPrefix() + " &r" + user.getPlayer().getDisplayName() + "&r " + user.getSuffix(), "", "&5CLICK &7To change", "&5RIGHT CLICK &7To clear");
+       inventory.setItem(4, Utility.createGUIItem("&3&lChat Format", Utility.colorizeList(chat, user.getPlayer()), Material.PINK_STAINED_GLASS_PANE));
     }
 
     public void open() {

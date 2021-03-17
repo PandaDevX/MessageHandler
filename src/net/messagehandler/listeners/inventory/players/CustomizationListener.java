@@ -1,5 +1,6 @@
 package net.messagehandler.listeners.inventory.players;
 
+import net.messagehandler.MessageHandler;
 import net.messagehandler.utility.DataManager;
 import net.messagehandler.utility.User;
 import net.messagehandler.utility.Utility;
@@ -9,8 +10,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-
-import java.util.UUID;
 
 public class CustomizationListener implements Listener {
 
@@ -40,12 +39,21 @@ public class CustomizationListener implements Listener {
                     user.setConfig(user.getUuid().toString() + ".nametag", null);
                     user.getPlayer().closeInventory();
                     user.sendActionBarMessage("&aSuccessfully cleared name tag");
+                    Utility.reloadNameTag(MessageHandler.getInstance());
                     e.setCancelled(true);
                     break;
                 case "Quit Message":
                     user.setConfig(user.getUuid().toString() + ".leaveMessage", null);
                     user.getPlayer().closeInventory();
                     user.sendActionBarMessage("&aSuccessfully cleared quit message");
+                    e.setCancelled(true);
+                    break;
+                case "Chat Format":
+                    user.getPlayer().closeInventory();
+                    user.clearCustomPrefix();
+                    user.clearCustomSuffix();
+                    user.clearNickName();
+                    user.sendActionBarMessage("&aSuccessfully cleared chat custom formats");
                     e.setCancelled(true);
                     break;
             }
@@ -64,6 +72,12 @@ public class CustomizationListener implements Listener {
                     NameTag nameTag = new NameTag(user);
                     nameTag.setup();
                     nameTag.open();
+                    break;
+                case "Chat Format":
+                    e.setCancelled(true);
+                    ChatPrefix chatPrefix = new ChatPrefix(user);
+                    chatPrefix.setup();
+                    chatPrefix.open();
                     break;
                 default:
                     e.setCancelled(true);

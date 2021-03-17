@@ -3,8 +3,10 @@ package net.messagehandler.listeners.inventory.groups;
 import net.messagehandler.MessageHandler;
 import net.messagehandler.listeners.inventory.MainMenu;
 import net.messagehandler.utility.*;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -37,14 +39,27 @@ public class Members {
         List<String> members = new Group(group).getMembers();
         for(String member : members) {
             List<String> lore = new ArrayList<>();
+            Player mem = Bukkit.getPlayer(member);
             if(member.equals(new Group(group).getOwner())) {
                 lore.add("");
                 lore.add(Utility.colorize("&6&lOwner"));
+                lore.add("");
+                if(member == null) {
+                    lore.add(Utility.colorize("&7Status: " + status(mem == null)));
+                } else {
+                    lore.add(Utility.colorize("&7Status: " + status(user.canSee(new User(mem)))));
+                }
                 list.add(Utility.getPlayerHead(member, Utility.colorize("&3&l" + member), lore));
                 continue;
             }
             lore.add("");
             lore.add(Utility.colorize("&6&lMember"));
+            lore.add("");
+            if(member == null) {
+                lore.add(Utility.colorize("&7Status: " + status(mem == null)));
+            } else {
+                lore.add(Utility.colorize("&7Status: " + status(user.canSee(new User(mem)))));
+            }
             if(new Group(group).getOwner().equalsIgnoreCase(user.getName())) {
                 lore.add("");
                 lore.add(Utility.colorize("&5SHIFT CLICK &7To kick this member"));
@@ -72,6 +87,13 @@ public class Members {
 
     public void open() {
         user.getPlayer().openInventory(inventory);
+    }
+
+    private String status(boolean online) {
+        if(online) {
+            return Utility.colorize("&aOnline");
+        }
+        return Utility.colorize("&cOffline");
     }
 
     public int getMaxPage() {
