@@ -24,6 +24,7 @@ public class CapsEvent implements Listener {
         if(!plugin.getConfig().getBoolean("Anti Caps.Enable")) {
             return;
         }
+        if(e.getPlayer().hasPermission("messagehandler.anticaps.bypass")) return;
         int upper = 0;
         int lower = 0;
         if(e.getMessage().toLowerCase().length() >= plugin.getConfig().getInt("Anti Caps.Min Word")) {

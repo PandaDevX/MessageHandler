@@ -31,23 +31,48 @@ public class TicketMenuClick implements Listener {
 
         switch (Utility.stripColor(name)) {
             case "Create":
+                if(!user.hasPermission("messagehandler.ticketplayer") || !user.hasPermission("messagehandler.tickets.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 user.getPlayer().closeInventory();
                 obj.setup();
                 obj.openInventory();
                 break;
             case "Open Tickets":
+                if(!user.hasPermission("messagehandler.ticketadmin") || !user.hasPermission("messagehandler.tickets.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 tickets.setup(1, "open");
                 tickets.openInventory();
                 break;
             case "Closed Tickets":
+                if(!user.hasPermission("messagehandler.ticketadmin") || !user.hasPermission("messagehandler.tickets.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 tickets.setup(1, "close");
                 tickets.openInventory();
                 break;
             case "Assigned Tickets":
+                if(!user.hasPermission("messagehandler.ticketadmin") || !user.hasPermission("messagehandler.tickets.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 tickets.setup(1, "assign");
                 tickets.openInventory();
                 break;
             case "Tickets":
+                if(!user.hasPermission("messagehandler.ticketplayer") || !user.hasPermission("messagehandler.tickets.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 tickets.setup(1);
                 tickets.openInventory();
                 break;

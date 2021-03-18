@@ -45,6 +45,10 @@ public class ChatRadiusEvent implements Listener {
             }
         }
         if(listener != null && ChatColor.stripColor(e.getMessage()).charAt(0) == listener.charAt(0)) {
+            if(!e.getPlayer().hasPermission("messagehandler.chat.global")) {
+                DataManager.localChannel.add(e.getPlayer().getUniqueId());
+                return;
+            }
             recipients.addAll(Bukkit.getOnlinePlayers());
             e.setMessage(e.getMessage().substring(1));
             DataManager.globalChannel.add(e.getPlayer().getUniqueId());

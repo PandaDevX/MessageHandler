@@ -18,7 +18,7 @@ public class CommandCustomizationInventory implements CommandExecutor {
         }
 
         User user = new User((Player) sender);
-        if(!user.hasPermission("messagehandler.gui.customization")) {
+        if(!user.hasPermission("messagehandler.customization")) {
             user.sendMessage("&cYou cannot do that");
             return true;
         }

@@ -19,7 +19,7 @@ public class CommandOnlineInventory implements CommandExecutor {
         }
 
         User user = new User((Player) sender);
-        if(!user.hasPermission("messagehandler.gui.online")) {
+        if(!user.hasPermission("messagehandler.online")) {
             user.sendMessage("&cYou cannot do that");
             return true;
         }

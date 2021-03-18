@@ -19,6 +19,11 @@ public class CommandHandler implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 
+        if(!sender.hasPermission("messagehandler.command")) {
+            sender.sendMessage(Utility.colorize(Utility.parseMessage(MessageHandler.getInstance(), "&bYou cannot do that")));
+            return true;
+        }
+
         Player player = (Player) sender;
         if(args.length == 0) {
             MainPage mainPage = new MainPage();
@@ -28,6 +33,10 @@ public class CommandHandler implements CommandExecutor {
         }
         User user = new User(player);
         if(args[0].equalsIgnoreCase("help")) {
+            if(!sender.hasPermission("messagehandler.help")) {
+                sender.sendMessage(Utility.colorize(Utility.parseMessage(MessageHandler.getInstance(), "&bYou cannot do that")));
+                return true;
+            }
             int page = 1;
             if(args.length > 1) {
                 if(Utility.isInt(args[1])) {
@@ -83,6 +92,10 @@ public class CommandHandler implements CommandExecutor {
             return true;
         }
         if(args[0].equalsIgnoreCase("reload")) {
+            if(!sender.hasPermission("messagehandler.reload")) {
+                sender.sendMessage(Utility.colorize(Utility.parseMessage(MessageHandler.getInstance(), "&bYou cannot do that")));
+                return true;
+            }
             MessageHandler.getInstance().reloadConfig();
             user.sendMessage("&aConfig reloaded");
         }

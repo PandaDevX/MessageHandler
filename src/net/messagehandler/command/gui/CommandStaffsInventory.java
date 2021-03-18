@@ -19,7 +19,7 @@ public class CommandStaffsInventory implements CommandExecutor {
         }
 
         User user = new User((Player) sender);
-        if(!user.hasPermission("messagehandler.gui.staffs")) {
+        if(!user.hasPermission("messagehandler.staffs")) {
             user.sendMessage("&cYou cannot do that");
             return true;
         }

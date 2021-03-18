@@ -29,7 +29,7 @@ public class CommandTicketInventory implements CommandExecutor {
         ticketMenu.openInventory();
         if(args.length > 0) {
             if(args[0].equalsIgnoreCase("admin")) {
-                if(!user.hasPermission("messagehandler.gui.ticketadmin")) {
+                if(!user.hasPermission("messagehandler.ticketadmin")) {
                     user.sendMessage("&cYou cannot do that");
                     return true;
                 }

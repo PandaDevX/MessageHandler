@@ -18,7 +18,7 @@ public class CommandGroupChatInventory implements CommandExecutor {
         }
 
         User user = new User((Player) sender);
-        if(!user.hasPermission("messagehandler.gui.groupchat")) {
+        if(!user.hasPermission("messagehandler.groupchat")) {
             user.sendMessage("&cYou cannot do that");
             return true;
         }

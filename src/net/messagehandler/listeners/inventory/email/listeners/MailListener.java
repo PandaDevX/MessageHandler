@@ -36,16 +36,31 @@ public class MailListener implements Listener {
         switch (ChatColor.stripColor(name)) {
 
             case "Send":
+                if(!user.hasPermission("messagehandler.email.send") || !user.hasPermission("messagehandler.email.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 EmailSend emailSend = new EmailSend(user);
                 emailSend.setup();
                 emailSend.openEmail();
                 break;
             case "Inbox":
+                if(!user.hasPermission("messagehandler.email.inbox") || !user.hasPermission("messagehandler.email.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 inbox = new EmailInbox(user);
                 inbox.setup(1);
                 inbox.open();
                 break;
             case "Clear":
+                if(!user.hasPermission("messagehandler.email.clear") || !user.hasPermission("messagehandler.email.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 FileUtil util = new FileUtil(MessageHandler.getInstance(), "playerdata.yml", FileUtilType.DATA);
                 if(!user.hasEmptyEmail()) {
                     util.get().set(user.getUuid().toString() + ".mail", null);

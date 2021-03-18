@@ -45,12 +45,14 @@ public class MenuClick implements Listener {
             case "Ticket":
                 e.setCancelled(true);
                 TicketMenu menu = new TicketMenu(user);
-                if(e.getClick() == ClickType.SHIFT_LEFT && user.hasPermission("messagehandler.gui.ticketadmin")) {
+                if(e.getClick() == ClickType.SHIFT_LEFT && user.hasPermission("messagehandler.ticketadmin")) {
                     menu.setup("admin");
                     menu.openInventory();
                     return;
                 }
-                if(!e.getWhoClicked().hasPermission("messagehandler.gui.ticket")) {
+                if(!user.hasPermission("messagehandler.ticket") || !user.hasPermission("messagehandler.gui.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
                     break;
                 }
                 menu.setup("player");
@@ -58,7 +60,9 @@ public class MenuClick implements Listener {
                 break;
             case "eMail":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.gui.email")) {
+                if(!user.hasPermission("messagehandler.email") || !user.hasPermission("messagehandler.gui.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
                     break;
                 }
                 Mail mail = new Mail(user);
@@ -67,7 +71,9 @@ public class MenuClick implements Listener {
                 break;
             case "GroupChat":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.gui.groupchat")) {
+                if(!user.hasPermission("messagehandler.groupchat") || !user.hasPermission("messagehandler.gui.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
                     break;
                 }
                 groupChat = new GroupChat(user);
@@ -76,7 +82,9 @@ public class MenuClick implements Listener {
                 break;
             case "Online":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.gui.online")) {
+                if(!user.hasPermission("messagehandler.online") || !user.hasPermission("messagehandler.gui.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
                     break;
                 }
                 online = new Online(user);
@@ -85,7 +93,9 @@ public class MenuClick implements Listener {
                 break;
             case "Staffs":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.gui.staffs")) {
+                if(!user.hasPermission("messagehandler.staffs") || !user.hasPermission("messagehandler.gui.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
                     break;
                 }
                 staff = new Staffs(user);
@@ -98,7 +108,9 @@ public class MenuClick implements Listener {
                 break;
             case "Banned Words":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.gui.bannedwords")) {
+                if(!user.hasPermission("messagehandler.bannedWords") || !user.hasPermission("messagehandler.gui.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
                     break;
                 }
                 bannedWords = new BannedWords(user);
@@ -114,7 +126,9 @@ public class MenuClick implements Listener {
                 break;
             case "Customization":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.gui.customization")) {
+                if(!user.hasPermission("messagehandler.customization") || !user.hasPermission("messagehandler.gui.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
                     break;
                 }
                 Customization customization = new Customization(user);
@@ -123,7 +137,9 @@ public class MenuClick implements Listener {
                 break;
             case "Your Preference":
                 e.setCancelled(true);
-                if(!e.getWhoClicked().hasPermission("messagehandler.gui.chat")) {
+                if(!user.hasPermission("messagehandler.chat") || !user.hasPermission("messagehandler.gui.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
                     break;
                 }
                 Preference preference = new Preference(user);

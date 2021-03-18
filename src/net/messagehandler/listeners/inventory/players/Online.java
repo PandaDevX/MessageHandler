@@ -35,16 +35,7 @@ public class Online {
             if(onlineP.hasNickName()) {
                 lore.add(Utility.colorize("&7NAME: &f" + online.getName()));
             }
-            String status = "";
-            if(onlineP.isAFK()) {
-                status = "AFK";
-            }else if(onlineP.isHidden()){
-                status = "Hidden";
-            }else {
-                status = "Online";
-            }
             if(user.canSee(onlineP)) {
-                lore.add(Utility.colorize("&7STATUS: &f" + status));
                 lore.add(Utility.colorize("&7PING: " + Utility.getPing(onlineP.getPlayer())));
                 list.add(Utility.getPlayerHead(online.getName(),
                         onlineP.hasNickName() ? Utility.colorize(onlineP.getNickName()) : Utility.colorize("&3&l" + online.getName()),

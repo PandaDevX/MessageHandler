@@ -20,7 +20,7 @@ public class CommandEmailInventory implements CommandExecutor {
         }
 
         User user = new User((Player) sender);
-        if(!user.hasPermission("messagehandler.gui.email")) {
+        if(!user.hasPermission("messagehandler.email")) {
             user.sendMessage("&cYou cannot do that");
             return true;
         }

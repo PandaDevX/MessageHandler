@@ -28,22 +28,36 @@ public class GroupChatClick implements Listener {
 
         String name = e.getCurrentItem().getItemMeta().getDisplayName();
         String finalName = Utility.stripColor(name);
-
+        User user = new User((Player)e.getWhoClicked() );
         switch (finalName) {
             case "Groups":
+                if(!user.hasPermission("messagehandler.groups.groups") || !user.hasPermission("messagehandler.groups.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 groups = new Groups(new User((Player) e.getWhoClicked()));
                 groups.setup(1);
                 groups.open();
                 break;
             case "Your Groups":
+                if(!user.hasPermission("messagehandler.groups.personal") || !user.hasPermission("messagehandler.groups.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 personalGroups = new PersonalGroups(new User((Player) e.getWhoClicked()));
                 personalGroups.setup(1);
                 personalGroups.open();
                 break;
             case "Create":
+                if(!user.hasPermission("messagehandler.groups.create") || !user.hasPermission("messagehandler.groups.*")) {
+                    e.setCancelled(true);
+                    Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                    break;
+                }
                 DataManager.groupCreators.add(e.getWhoClicked().getUniqueId());
                 e.getWhoClicked().closeInventory();
-                User user = new User((Player) e.getWhoClicked());
                 if(e.getClick() == ClickType.SHIFT_LEFT) {
                     user.sendTitle("&2&lGroup Chat:&eType the name of the group and the password or &ccancel &eto cancel", 10, 36000, 20);
                     break;

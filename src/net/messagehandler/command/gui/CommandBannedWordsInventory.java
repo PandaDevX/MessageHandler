@@ -19,7 +19,7 @@ public class CommandBannedWordsInventory implements CommandExecutor {
         }
 
         User user = new User((Player) sender);
-        if(!user.hasPermission("messagehandler.gui.bannedwords")) {
+        if(!user.hasPermission("messagehandler.bannedwords")) {
             user.sendMessage("&cYou cannot do that");
             return true;
         }

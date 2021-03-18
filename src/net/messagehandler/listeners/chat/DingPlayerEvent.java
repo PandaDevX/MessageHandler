@@ -42,6 +42,9 @@ public class DingPlayerEvent implements Listener {
                        continue;
                    }
                    if(words[i].equalsIgnoreCase("@all")) {
+                       if(!e.getPlayer().hasPermission("messagehandler.pingall")) {
+                           return;
+                       }
                        message = message.replace(words[i], Utility.colorize("&e&lAll"));
                        if(!player.getName().equals(e.getPlayer().getName())) {
                            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 7f, 1f);

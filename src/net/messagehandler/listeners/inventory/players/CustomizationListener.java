@@ -24,18 +24,33 @@ public class CustomizationListener implements Listener {
         if(e.getClick() == ClickType.RIGHT) {
             switch(Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName())) {
                 case "Join Message":
+                    if(!user.hasPermission("messagehandler.customize.join") || !user.hasPermission("messagehandler.customize.*")) {
+                        e.setCancelled(true);
+                        Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                        break;
+                    }
                     user.setConfig(user.getUuid().toString() + ".joinMessage", null);
                     user.getPlayer().closeInventory();
                     user.sendActionBarMessage("&aSuccessfully cleared join message");
                     e.setCancelled(true);
                     break;
                 case "Join Title":
+                    if(!user.hasPermission("messagehandler.customize.join") || !user.hasPermission("messagehandler.customize.*")) {
+                        e.setCancelled(true);
+                        Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                        break;
+                    }
                     user.setConfig(user.getUuid().toString() + ".joinTitle", null);
                     user.getPlayer().closeInventory();
                     user.sendActionBarMessage("&aSuccessfully cleared join title");
                     e.setCancelled(true);
                     break;
                 case "NameTag":
+                    if(!user.hasPermission("messagehandler.customize.nametag") || !user.hasPermission("messagehandler.customize.*")) {
+                        e.setCancelled(true);
+                        Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                        break;
+                    }
                     user.setConfig(user.getUuid().toString() + ".nametag", null);
                     user.getPlayer().closeInventory();
                     user.sendActionBarMessage("&aSuccessfully cleared name tag");
@@ -43,12 +58,22 @@ public class CustomizationListener implements Listener {
                     e.setCancelled(true);
                     break;
                 case "Quit Message":
+                    if(!user.hasPermission("messagehandler.customize.quit") || !user.hasPermission("messagehandler.customize.*")) {
+                        e.setCancelled(true);
+                        Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                        break;
+                    }
                     user.setConfig(user.getUuid().toString() + ".leaveMessage", null);
                     user.getPlayer().closeInventory();
                     user.sendActionBarMessage("&aSuccessfully cleared quit message");
                     e.setCancelled(true);
                     break;
                 case "Chat Format":
+                    if(!user.hasPermission("messagehandler.customize.chat") || !user.hasPermission("messagehandler.customize.*")) {
+                        e.setCancelled(true);
+                        Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                        break;
+                    }
                     user.getPlayer().closeInventory();
                     user.clearCustomPrefix();
                     user.clearCustomSuffix();
@@ -61,19 +86,39 @@ public class CustomizationListener implements Listener {
             switch(Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName())) {
                 case "Join Message":
                 case "Join Title":
+                    if(!user.hasPermission("messagehandler.customize.join") || !user.hasPermission("messagehandler.customize.*")) {
+                        e.setCancelled(true);
+                        Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                        break;
+                    }
                 case "Quit Message":
+                    if(!user.hasPermission("messagehandler.customize.quit") || !user.hasPermission("messagehandler.customize.*")) {
+                        e.setCancelled(true);
+                        Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                        break;
+                    }
                     DataManager.customization.put(e.getWhoClicked().getUniqueId(), Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
                     e.setCancelled(true);
                     e.getWhoClicked().closeInventory();
                     user.sendTitle("&6&l" + Utility.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()) + ":&fType your own customized message type &ccancel &fto cancel", 40, 36000, 40);
                     break;
                 case "NameTag":
+                    if(!user.hasPermission("messagehandler.customize.nametag") || !user.hasPermission("messagehandler.customize.*")) {
+                        e.setCancelled(true);
+                        Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                        break;
+                    }
                     e.setCancelled(true);
                     NameTag nameTag = new NameTag(user);
                     nameTag.setup();
                     nameTag.open();
                     break;
                 case "Chat Format":
+                    if(!user.hasPermission("messagehandler.customize.chat") || !user.hasPermission("messagehandler.customize.*")) {
+                        e.setCancelled(true);
+                        Utility.sendNoPerm(e.getClickedInventory(), e.getSlot(), e.getCurrentItem());
+                        break;
+                    }
                     e.setCancelled(true);
                     ChatPrefix chatPrefix = new ChatPrefix(user);
                     chatPrefix.setup();

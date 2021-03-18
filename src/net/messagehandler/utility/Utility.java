@@ -21,6 +21,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -567,6 +568,15 @@ public class Utility {
         for(Player player : Bukkit.getOnlinePlayers()) {
             removeNameTag(player);
         }
+    }
+
+    public static void sendNoPerm(Inventory inventory, int slot, ItemStack original) {
+        inventory.setItem(slot, createGUIItem("&cNo Permission", Material.RED_CONCRETE));
+        new BukkitRunnable() {
+            public void run() {
+                inventory.setItem(slot, original);
+            }
+        }.runTaskLater(MessageHandler.getInstance(), 60L);
     }
 
     public static boolean sensor(List<String> words, List<String> bannedWords, User user) {
