@@ -1,26 +1,39 @@
+# Enable or disable this feature
+Enable: true
+
+
+# Every content here can either access by permission or by custom query such as : /help dummy
+
 Help:
-  pages:
-    # this will occur if the player is permitted and typed /help anotherhelp
-    anotherHelp:
-      - 'This is a custom help page'
-      - 'They must do /help anotherHelp <case sensitive>'
-      - 'do not forget player must have the permission below'
-      - 'messagehandler.help.anotherHelp'
-
-  # default or dummy or any other will occur if they only done /help without arguments
-  # This will occur if you have no messagehandler.help.dummy permission
+  # Help lines per page
+  # In this example it is 12
+  # If the player has the permission from default to builder 
+  # It will show all those page but 12 is the maximum lines
+  # So if it exceed it goes to page 2
+  content: 12
+  
+  # Default 
+  # This is the default help page if player atleast have messagehandler.help permission
   default:
-    - 'Help page'
-    - 'Kill mobs to rank up'
-    - 'Support message handler and the author'
-    - 'Thank you so much for using the plugin'
+    - '&6&lSERVER &fJust enjoy the game'
+    - '&6&lSERVER &fHave a good day'
 
-  # messagehandler.help.<dummy>
+  # permission needed messagehandler.help.dummy
   # you can add as many as you want
-  # one list is going to sent to the player only
-  # dummy is only an example you can add as many as you want
   dummy:
-    - 'This is a dummy help page'
-    - 'Create your own'
-    - 'The player must have permission messagehandler.help.dummy'
-    - 'Thank you so much for using the plugin'
+    - '&6&lBEGINNER &fYou must do a &2/quest &fto start'
+    - '&6&lBEGINNER &fYou can use &2/job &fto earn'
+    
+  # permission needed messagehandler.help.builder
+  builder:
+      - '&6&lBUILDER &fHello builder please use your imagination'
+      - '&6&lBUILDER &fProduce wonderful block buildings'
+    
+  # if the player look for a help that does not exist 
+  # say /help alskdnlaksnflfnsal
+  unknown:
+     - '&6&lERROR &fHelp page could not be found'
+     
+  op: 
+     - '&6This is for opped players'
+     - '&6Or for console'     

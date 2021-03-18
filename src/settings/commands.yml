@@ -1,4 +1,9 @@
-commands:
+# You can either enable or disable this feature
+Enable: false
+
+
+# List of commands to block
+Commands:
   - '/op'
   - '/deop'
   - '/server'

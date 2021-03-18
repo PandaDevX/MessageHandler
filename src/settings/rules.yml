@@ -2,8 +2,13 @@
 
 Rules:
 
-  - '1 Edit this one'
-  - '2 Load it in the server'
-  - '3 Use /rule command'
-  - '4 use this for colors &6Color'
-  - '5 Support Message Handler'
+  - '&8[&c&l1&8] &bKeep in mind you have to enjoy playing'
+  - '&8[&c&l2&8] &bYou must leave a review to this plugin'
+  - '&8[&c&l3&8] &bI hope you like it'
+# U can disable or enable this feature
+# If this is enabled they must agree to the rules first before playing the server
+# This will only persist if the player joined for the first time
+prompt: true
+
+# I agree is always the keyword that system will look for
+prompt message: '&bType &eI agree &bto agree'

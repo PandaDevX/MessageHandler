@@ -1,12 +1,56 @@
 # This is the ingame motd
-motd:
-  - '&bwelcome to &e%server_name%'
-  - '&bHi &r%prefix%&e%player_displayname%'
-  - '&btype &a/help &bfor help'
+Motd:
+  Enable: true
+
+  # If picture is enabled
+  # you can only list messages maximum size of 8
+  Message:
+  - '&8[&6&l!&8] &6MOTD &8[&6&l!&8]'
+  - ' '
+  - '&fWelcome to the server &6{server}'
+  - '&fYou can use &6/help &fto know how to play'
+  - '&fThere are &a{online} &fonline players'
+  - '&fGoodluck {prefix} &c&l{displayname}'
+  - '&fYou are in the world name &c{world}'
+
+# This feature is for picture message
+# Implements PictureLogin by NathanG
+Picture:
+    Enable: true
+
+    # Clears the chat first before sending motd with picture
+    Clear Chat: false
+
+    # Either yes or no the text is beside image
+    Center Text: false
+
+    # Change this to change what character to fulfill the image
+    # BLOCK
+    # DARK_SHADE
+    # MEDIUM_SHADE
+    # LIGHT_SHADE ( transparent )
+    Character: 'BLOCK'
+
+    # Fallback image
+    # If enabled it will use the image if cannot find the avatar
+    Fallback: true
+
+    # If you require a permission
+    # node : messagehandler.motd.picture
+    Require Permission: false
+
+    # Settings this false will send the avatar to other player too
+    Player Only: true
+
+    # URL where we can get the player's head
+    # {uuid} - player uuid
+    # {player} - player name
+    URL: 'https://minepic.org/avatar/8/%uuid%'
+
 
 # This is what players see on server lists
-server-motd:
+Server Motd:
 
-  enable: true
+  Enable: true
 
-  motd: '&bWelcome to &a%server_name%'
+  Motd: '&bWelcome to &a{server}\n&6Second line'
