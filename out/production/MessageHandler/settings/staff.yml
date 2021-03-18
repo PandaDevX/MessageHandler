@@ -1,8 +1,5 @@
 Staffs:
 
-  # name of the inventory
-  name: '&6&lStaffs'
-
   # Setup the staffs inventory rows
   row: 6
 
@@ -31,5 +28,19 @@ Staffs:
         # Configure the lore
         lore:
           - ''
-          - '&7RANK: &6ADMIN'
+          - '&7RANK: &6Admin'
+
+      md_5:
+
+         name: '&3&lMD_5'
+         lore:
+            - ''
+            - '&7RANK: &3Moderator'
+
+      Raymart:
+
+         name: '&3&lRaymart'
+         lore:
+            - ''
+            - '&7RANK: &cOwner'
 

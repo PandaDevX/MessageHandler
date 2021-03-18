@@ -2,13 +2,13 @@ animated-tab: true
 
 tab:
   header:
-    - '&a&lMessage&b&lHandler \n &3Welcome to the server &e%player%\n\n'
-    - '&c&lMessage&d&lHandler\n&3Welcome to the server &e%player%\n\n'
-    - '&e&lMessage&1&lHandler\n&3Welcome to the server &e%player%\n\n'
-    - '&2&lMessage&3&lHandler\n&3Welcome to the server &e%player%\n\n'
-    - '&4&lMessage&5&lHandler\n&3Welcome to the server &e%player%\n\n'
+    - '&a&lMessage&b&lHandler \n &3Welcome to the server &e{player}\n\n'
+    - '&c&lMessage&d&lHandler\n&3Welcome to the server &e{player}\n\n'
+    - '&e&lMessage&1&lHandler\n&3Welcome to the server &e{player}\n\n'
+    - '&2&lMessage&3&lHandler\n&3Welcome to the server &e{player}\n\n'
+    - '&4&lMessage&5&lHandler\n&3Welcome to the server &e{player}\n\n'
   footer:
-    - '\n&bPlayer Online: &a%online%'
+    - '\n&bPlayer Online: &a{online} / {max}'
 
   # delay and period
   # both ticks

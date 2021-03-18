@@ -53,6 +53,6 @@ public class EmailLogoListener implements Listener {
         DataManager.emailBlock.put(user.getUuid(), e.getCurrentItem().getType());
         EmailSend emailSend = new EmailSend(user);
         emailSend.setup();
-        emailSend.openEmail(20L);
+        emailSend.openEmail();
     }
 }

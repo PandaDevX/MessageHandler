@@ -161,7 +161,7 @@ public class EmailSendListener implements Listener {
         EmailSend emailSend = new EmailSend(user);
         DataManager.mailRecipient.put(user.getUuid(), e.getMessage());
         emailSend.setup();
-        emailSend.openEmail(20L);
+        emailSend.openEmail();
         e.setCancelled(true);
 
     }
@@ -182,7 +182,7 @@ public class EmailSendListener implements Listener {
         EmailSend send = new EmailSend(user);
         DataManager.emailMessage.put(user.getUuid(), e.getMessage());
         send.setup();
-        send.openEmail(20L);
+        send.openEmail();
         e.setCancelled(true);
     }
 
@@ -204,7 +204,7 @@ public class EmailSendListener implements Listener {
             user.sendTitle(Utility.getPrefix() + ":&bSuccessfully chosen a subject");
             EmailSend send = new EmailSend(user);
             send.setup();
-            send.openEmail(20L);
+            send.openEmail();
             e.setCancelled(true);
             return;
         }
@@ -212,7 +212,7 @@ public class EmailSendListener implements Listener {
         EmailSend send = new EmailSend(user);
         DataManager.emailSubject.put(user.getUuid(), e.getMessage());
         send.setup();
-        send.openEmail(20L);
+        send.openEmail();
         e.setCancelled(true);
     }
 

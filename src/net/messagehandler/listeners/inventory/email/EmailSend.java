@@ -56,18 +56,13 @@ public class EmailSend {
                 Utility.colorize("&5SHIFT CLICK &7To cancel")), Material.BOOK));
     }
 
-
-    public void openEmail(long tick) {
+    public void openEmail() {
         new BukkitRunnable() {
             @Override
             public void run() {
                 user.getPlayer().openInventory(inventory);
             }
-        }.runTaskLater(MessageHandler.getInstance(), tick);
-    }
-
-    public void openEmail() {
-        user.getPlayer().openInventory(inventory);
+        }.runTaskLater(MessageHandler.getInstance(), 2L);
     }
 
 }

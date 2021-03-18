@@ -31,7 +31,7 @@ public class EmailAttachmentListener implements Listener {
                 user.getPlayer().closeInventory();
                 EmailSend send = new EmailSend(user);
                 send.setup();
-                send.openEmail(60L);
+                send.openEmail();
                 break;
             case SHIFT_LEFT:
                 user.sendTitle("&2&lEmail:&eYou successfully cancel item adding attachments, wait a moment to get you back");
@@ -44,7 +44,7 @@ public class EmailAttachmentListener implements Listener {
                 DataManager.emailAttachments.remove(user.getUuid());
                 EmailSend emailSend = new EmailSend(user);
                 emailSend.setup();
-                emailSend.openEmail(60L);
+                emailSend.openEmail();
                 break;
         }
     }

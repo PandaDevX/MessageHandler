@@ -1,28 +1,31 @@
 # This is about client or server name
 Server Name: 'Message Craft'
 
-  # Anti Swear
-  # You can either block or replace message once player swear
+# Anti Swear
+# You can either block or replace message once player swear
 
-  ##################################
-  ##                              ##
-  ####       Anti Swear         ####
-  ##                              ##
-  ##################################
+##################################
+##                              ##
+####       Anti Swear         ####
+##                              ##
+##################################
 
 Anti Swear:
-  # block or replace or disable
-  Option: 'block'
+   # block or replace or disable
+   Option: 'block'
 
-  # replacement character
-  # if test is a swear word it will become ****
-  Replacement Char: '*'
+   # replacement character
+   # if test is a swear word it will become ****
+   Replacement Char: '*'
 
-    ##################################
-    ##                              ##
-    ####       Grammar Nazi       ####
-    ##                              ##
-    ##################################
+   # Input a reason to enable this
+   Warn: 'Swearing'
+
+##################################
+##                              ##
+####       Grammar Nazi       ####
+##                              ##
+##################################
 
 # Grammar Nazi
 Grammar:
@@ -33,11 +36,11 @@ Grammar:
   Grammar Fix: true
 
 
-    ##################################
-    ##                              ##
-    ####       Chat Channel       ####
-    ##                              ##
-    ##################################
+##################################
+##                              ##
+####       Chat Channel       ####
+##                              ##
+##################################
 
 # Chat Channels
 Chat Channel:
@@ -54,6 +57,10 @@ Chat Channel:
   # ! <chat message> Automatically chat with global
   Global: '&6&lGLOBAL'
   Global Listener: '!'
+
+  # This is the default group channel
+  # group refers to the group where player belong
+  Group: '&b&l{group}'
 
   # Staff Chat
   # Listener will be # as example
@@ -73,16 +80,22 @@ Chat Channel:
 # Chat Formats
 Chat Format:
 
-  # You can enable or disable this feature
-  Enable: true
+   # You can enable or disable this feature
+   Enable: true
 
-  # This will trigger if group you specify below could not be found
-  Default Format: '&r{channel} &e&lDefault &7{player} &f> &r{message}'
+   # Chat Format
+   Format: '{channel} {prefix} &r{displayname} {suffix} &f> &r{message}'
 
-  # Per groups formats Case Sensitive
-  Groups:
-    Admin:
-      Format: '&r{channel} &6&lAdmin &f{player} &f> &r{message}'
+   # This will trigger if group you specify below could not be found
+   Default:
+      Prefix: '&e&lDefault'
+      Suffix: ''
+
+   # Per groups prefix and suffx Case Sensitive
+   Groups:
+      Admin:
+        Prefix: '&6&lAdmin'
+        Suffix: ''
 
 ##################################
 ##                              ##
@@ -92,29 +105,29 @@ Chat Format:
 
 Anti Spam:
 
-  # Prevent player from chatting similar words
-  Anti Chat Similar: true
+   # Prevent player from chatting similar words
+   Anti Chat Similar: true
 
-  # Percentage of similiarity from previous message to check so you can block them if requirements met
-  Similarty Percent: 80
+   # Percentage of similiarity from previous message to check so you can block them if requirements met
+   Similarty Percent: 80
 
-  # Chat cooldown
-  Chat Cooldown:
+   # Chat cooldown
+   Chat Cooldown:
 
-    Enable : true
+        Enable : true
 
-    Seconds: 3
-    # use %time_left% for the remaining time
-    Message: '&6You can only send one message per &c3 seconds'
+        Seconds: 3
+        # use %time_left% for the remaining time
+        Message: '&6You can only send one message per &c3 seconds'
 
-  # Command Cooldown
-  Command Cooldown:
+   # Command Cooldown
+   Command Cooldown:
 
-    Enable: false
+        Enable: false
 
-    Seconds: 3
-    # you can use %time_left% same above
-    Message: '&6You can only use one command per &c3 Seconds'
+        Seconds: 3
+        # you can use %time_left% same above
+        Message: '&6You can only use one command per &c3 Seconds'
 
 ##################################
 ##                              ##
@@ -123,7 +136,8 @@ Anti Spam:
 ##################################
 Anti Ad:
 
-  Enable: true
+     Enable: true
+     Warn: 'Advertising'
 
 ##################################
 ##                              ##
@@ -132,16 +146,16 @@ Anti Ad:
 ##################################
 Anti Caps:
 
-  Enable: true
+   Enable: true
 
-  # Minimum word length to check for capslock
-  Min Word: 8
+   # Minimum word length to check for capslock
+   Min Word: 8
 
-  # Input the percentage criteria
-  Percentage: 80
+   # Input the percentage criteria
+   Percentage: 80
 
-  # You can either block or put replace so message will be replaced to lower case message
-  Action: 'block'
+   # You can either block or put replace so message will be replaced to lower case message
+   Action: 'replace'
 
 ##################################
 ##                              ##
@@ -151,32 +165,34 @@ Anti Caps:
 
 Custom NameTag:
 
-  Enable: true
+   Enable: true
 
-  # Show player health below their name
-  Show Player Health: true
+   # Show player health below their name
+   Show Player Health: true
 
-  # setup name tags here
-  OP:
-    Prefix: '&4&lOP '
-    Color: 'DARK_GREEN'
+   # setup name tags here
+   OP:
+     Prefix: '&4&lOP '
+     Color: 'DARK_GREEN'
 
-  AFK:
-    Prefix: '&7&lAFK '
-    Color: 'DARK_GRAY'
+   AFK:
+     Prefix: '&7&lAFK '
+     Color: 'DARK_GRAY'
 
-  Default:
-    Prefix: '&e&lDefault '
-    Color: 'AQUA'
+   Default:
+     Prefix: '&e&lDefault '
+     Color: 'AQUA'
+     Suffix: ''
 
-  Groups:
+   Groups:
 
-    # You can add your own group
-    # permission is based on the name
-    # this is an example messagehandler.nametag.test
-    test:
-      Prefix: '&5&lTest '
-      Color: 'GRAY'
+     # You can add your own group
+     # permission is based on the name
+     # this is an example messagehandler.nametag.test
+     test:
+       Prefix: '&5&lTest '
+       Color: 'GRAY'
+       Suffix: ''
 
 ##################################
 ##                              ##
@@ -188,10 +204,10 @@ Custom NameTag:
 # Customize it to your preference
 Ping Player:
 
-  Enable: true
+   Enable: true
 
-  # listen to character = @ + player name
-  Listener: '@'
+   # listen to character = @ + player name
+   Listener: '@'
 
 ##################################
 ##                              ##
@@ -202,11 +218,35 @@ Ping Player:
 # Setup server logs
 Logs:
 
-  # Logs chat
-  Chat: true
+   # Logs chat
+   Chat: true
 
-  # Logs command
-  Command: true
+   # Logs command
+   Command: true
+
+   # Logs swear
+   Swear: true
+
+   # Logs advertise
+   Advertise: true
+
+   # Logs warn
+   Warn: true
+
+##################################
+##                              ##
+####           AFK            ####
+##                              ##
+##################################
+
+# AFK Settings
+AFK:
+
+   # Vanish when player afk?
+   Vanish: false
+
+   # God mode if player is afk?
+   God: true
 
 
 ##################################
@@ -218,6 +258,217 @@ Logs:
 # This is for damage and health indicator during attacking mobs or player
 Indicator:
 
-  # Show on air
-  Air: true
+    # Show on air
+    Air: true
 
+    # Bar health indicator
+    Bar: true
+
+    # Custom name to mobs that shows the name and remaining health / max health
+    Custom Name: true
+
+    # Player health shown
+    Player Health: true
+
+
+##################################
+##                              ##
+####    Join and Leave        ####
+##                              ##
+##################################
+
+# Setup the join and leave messages
+# This is for join message
+Join:
+
+   Enable: true
+   Message:
+       # For first join or new players
+       Starter: '&6&lMESSAGEHANDLER &7>> &fPlease welcome &b{player}'
+       # Leave blank to disable
+       # Title:Subtitle
+       Starter Title: '&6Welcome:&fWelcome to the server &b{player}'
+
+       # This option is for all players who played the server already
+       Default: '&6&lMESSAGEHANDLER &7>> &fWelcome back &b{player}'
+       Default Title: '&6Welcome Back:&b{player}'
+
+# If player leave
+Leave:
+
+   Enable: true
+   Message:
+        # This will be sent to the player screen if kicked
+        Kick: '&6&lMESSAGEHANDLER &7>> &b{player} &fYou have been kicked'
+        Default: '&6&lMESSAGEHANDLER &7>> &b{player} &fHas left'
+
+##################################
+##                              ##
+####     Death Message        ####
+##                              ##
+##################################
+Death Message:
+
+    # for killer
+    Killer: '&fYou killed &6{victiom}'
+
+    # for victim
+    Victim: '&fYou have been killed by &6{killer}'
+
+    # if player is murdered
+    Murdered: '&f{player} murdered by &6{killer}'
+
+    # natural death
+    Natural: '&f{player} died from &6{reason}'
+
+
+##################################
+##                              ##
+####      Anti Unicode        ####
+##                              ##
+##################################
+
+Anti Unicode:
+
+     # Enable to enable
+     Enable: true
+
+     # Whitelist
+     # add as many as you want
+     Whitelist:
+       - ''
+
+
+##################################
+##                              ##
+####    Warn And Actions      ####
+##                              ##
+##################################
+
+# You can always enable or disable this feature
+# Disabling this feature won't affect /warn command
+# It will only disable points system
+Warn:
+
+   Enable: true
+
+   # This will run when you used /warn <reason>
+   # You can disable this by leaving it blank
+   # Reasons are case insensitive
+   # But you must capitalize first letter here in config so the system will able to detect it
+
+   # Placeholders available
+   # {warn_player} the player warned
+   # {warn_admin} the admin who warn the player
+   # {warn_reason} reason stated in the warn
+   Reasons:
+
+       # Remove stuffs you don't wanted
+       Advertising:
+          # This message will be sent to player
+          Message: '[&6&l!&8] &6Please refrain from doing it'
+          # This will be broadcasted
+          Broadcast: '&8[&6&l!&8] &6{warn_player} &fhas been warned by &c{warn_admin} &fbecause of &cAdvertising'
+
+       # Swearing
+       Swearing:
+          # This message will be sent to player
+          Message: '&8[&6&l!&8] &6Please refrain from doing it'
+          # This will be broadcasted
+          Broadcast: '&8[&6&l!&8] &6{warn_player} &fhas been warned by &c{warn_admin} &fbecause of &cSwearing'
+          # Put this true if you want it to be automated when player advertised everything will run
+
+       # This will run if the reason wasn't found above
+       Other:
+          # Action is a command coming from the console
+          Action: 'mute {warn_player} swearing'
+          # This message will be sent to player
+          Message: '&8[&6&l!&8] &6Please refrain from doing it'
+          # This will be broadcasted
+          Broadcast: '&8[&6&l!&8] &6{warn_player} &fhas been warned by &c{warn_admin} &fbecause of &c{warn_reason}'
+          # Put this true if you want it to be automated when player advertised everything will run
+
+
+    # You can leave blank or remove some section you don't want to use
+   Points:
+
+      # You can disable or enable point system
+      Enable: true
+
+      # follow the format or else you will get an error
+      Warn_1:
+
+          Action: ''
+
+          Message: '&6This is your first offense'
+
+          Broadcast: '{server} &6{warn_player} &fhas been warned for &c{warn_reason} &ffor the first time'
+
+
+      Warn_5:
+
+          Action: 'ban {warn_player} fifth warning'
+
+          Message: '&6This is your fifth offense'
+
+          Broadcast: '{server} &6{warn_player} &fhas been warned for &c{warn_reason} &ffor the fifth time'
+
+
+##################################
+##                              ##
+####        Announcer         ####
+##                              ##
+##################################
+
+# Format for the announcer or /broadcast command
+# You can change the format here to your desire
+
+# If you want the broadcasted message send to all players in holo
+BroadcastHolo: false
+
+Broadcast:
+    - '&8[&6&l!&8] &dBroadcast &8[&6&l!&8] &r{broadcast_message}'
+##################################
+##                              ##
+####     Extra Messages       ####
+##                              ##
+##################################
+
+# All extra messages can be enable or disable
+Extras:
+
+   # If the player changed game mode
+   Gamemode Change: true
+
+   # This will occur when player enter or leave bed
+   Bed: true
+
+   # When player toggle flight
+   Toggle Flight: false
+
+   # Player leveled up
+   Level Up: true
+
+   # When player discover a new recipe
+   Recipe Discovery: true
+
+   # When player teleported
+   Teleport: true
+
+   # When player changed resource pack
+   Resource Pack: true
+
+   # When player respawned
+   Respawn: true
+
+   # Raids, Start, Stop, Triggered
+   Raids: true
+
+   # Weather changed ( lightning, rain )
+   Weather Change: true
+
+   # Create portal
+   Create Portal: true
+
+   # Item name of dropped item
+   Item Drop Name: true

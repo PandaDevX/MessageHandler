@@ -106,26 +106,89 @@ permissions:
     description: allow to use all commands
     default: op
     children:
+      messagehandler.afk: true
       messagehandler.broadcast: true
-      messagehandler.clear: true
-      messagehandler.clear.all: true
-      messagehandler.clear.other: true
+      messagehandler.clear.*: true
+      messagehandler.spy: true
+      messagehandler.command.*: true
       messagehandler.help: true
-      messagehandler.filter: true
-      messagehandler.groupchat: true
-      messagehandler.groupchat.help: true
-      messagehandler.groupchat.create: true
-      messagehandler.groupchat.join: true
-      messagehandler.groupchat.leave: true
-      messagehandler.groupchat.disband: true
-      messagehandler.groupchat.members: true
-      messagehandler.groupchat.list: true
-      messagehandler.groupchat.nickname: true
-      messagehandler.list: true
-      messagehandler.nickname: true
+      messagehandler.ignore: true
+      messagehandler.ignoreall: true
+      messagehandler.motd: true
+      messagehandler.nick: true
+      messagehandler.realname: true
+      messagehandler.rules: true
+      messagehandler.sendtitle: true
+      messagehandler.vanish: true
+      messagehandler.warn: true
+      messagehandler.message: true
+      messagehandler.gui.*: true
+      messagehandler.chat.*: true
+      messagehandler.book.*: true
+      messagehandler.sign.*: true
+      messagehandler.anvil.*: true
+
+  messagehandler.command.*:
+    description: allow to use all /messagehandler commands
+    default: op
+    children:
+      messagehandler.command: true
+      messagehandler.help: true
       messagehandler.reload: true
-      messagehandler.chat.color: true
-      messagehandler.chat.effect: true
+
+  messagehandler.gui.*:
+    description: allow to use all gui commands
+    default: op
+    children:
+      messagehandler.bannedwords: true
+      messagehandler.chat: true
+      messagehandler.customization: true
+      messagehandler.email: true
+      messagehandler.groupchat: true
+      messagehandler.online: true
+      messagehandler.staffs: true
+      messagehandler.customize.*: true
+      messagehandler.groups.*: true
+      messagehandler.tickets.*: true
+
+  messagehandler.tickets.*:
+    description: ticket events
+    default: op
+    children:
+      messagehandler.ticket: true
+      messagehandler.ticketadmin: true
+      messagehandler.ticketplayer: true
+
+  messagehandler.groups.*:
+    description: groupchat events
+    default: op
+    children:
+      messagehandler.groups.groups: true
+      messagehandler.groups.personal: true
+      messagehandler.groups.create: true
+
+  messagehandler.customize.*:
+    description: allow to use all customize events
+    default: op
+    children:
+      messagehandler.customize.join: true
+      messagehandler.customize.quit: true
+      messagehandler.customize.nametag: true
+      messagehandler.customize.chat: true
+
+  messagehandler.spy:
+    description: spy chat or command
+    default: op
+    children:
+      messagehandler.commandspy: true
+      messagehandler.chatspy: true
+
+  messagehandler.message:
+    description: allow to use all commands
+    default: op
+    children:
+      messagehandler.whisper: true
+      messagehandler.reply: true
 
   messagehandler.clear.*:
     description: allow to use all clear commands
@@ -135,16 +198,47 @@ permissions:
       messagehandler.clear.all: true
       messagehandler.clear.other: true
 
-  messagehandler.groupchat.*:
-    description: allow to use all groupchat commands
+  # having filtermsg permission will let you swear
+  # having filterad permission will let you advertise
+  messagehandler.anvil.*:
+    description: allow to use all anvil listeners
     default: op
     children:
-      messagehandler.groupchat: true
-      messagehandler.groupchat.help: true
-      messagehandler.groupchat.create: true
-      messagehandler.groupchat.join: true
-      messagehandler.groupchat.leave: true
-      messagehandler.groupchat.disband: true
-      messagehandler.groupchat.members: true
-      messagehandler.groupchat.list: true
-      messagehandler.groupchat.nickname: true
+      messagehandler.anvil.color: true
+      messagehandler.anvil.format: true
+      messagehandler.anvil.filterad: true
+      messagehandler.anvil.filtermsg: true
+
+  messagehandler.sign.*:
+    description: allow to use all anvil listeners
+    default: op
+    children:
+      messagehandler.sign.color: true
+      messagehandler.sign.format: true
+      messagehandler.sign.filterad: true
+      messagehandler.sign.filtermsg: true
+
+  messagehandler.book.*:
+    description: allow to use all anvil listeners
+    default: op
+    children:
+      messagehandler.book.color: true
+      messagehandler.book.format: true
+      messagehandler.book.filterad: true
+      messagehandler.book.filtermsg: true
+
+  messagehandler.chat.*:
+    description: allows you to skip filtering messages
+    default: op
+    children:
+      messagehandler.antiad.bypass: true
+      messagehandler.antiunicode.bypass: true
+      messagehandler.anticaps.bypass: true
+      messagehandler.antiswear.bypass: true
+      messagehandler.chat.global: true
+      messagehandler.commandblocker.bypass: true
+      messagehandler.ping: true
+      messagehandler.pingall: true
+      messagehandler.chatcooldown.bypass: true
+      messagehandler.chat.format: true
+      messagehandler.chat.color: true

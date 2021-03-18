@@ -47,9 +47,6 @@ public class ChatFormatEvent implements Listener {
         if(player.hasPermission("messagehandler.chat.format")) {
             message = Utility.formatString(message);
         }
-        if(player.hasPermission("messagehandler.chat.*") || player.isOp()) {
-            message = Utility.formatStringAll(message);
-        }
         return message;
     }
 

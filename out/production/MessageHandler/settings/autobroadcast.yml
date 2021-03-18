@@ -1,24 +1,36 @@
-auto-broadcast:
+auto-broadcast-message:
 
   enable: true
-
   # 1s - 1second(s)
   # 1m - 1minute(s)
   # 1d - 1day(s)
   # 1w - 1week(s)
   # sample combination >> 1w 1d = Equivalent to 1week and 1day
+  # combinations must include space in between for the system to read
   # interval is the cooldown before the message is sent
   # it is broadcast depends on your order
-  interval: '1m'
+  interval: '5m'
 
   messages:
-    - '&bWelcome to the server'
-    - '&bHope you are all good'
+     - '&8[&6&l!&8] &bWelcome to the server'
+     - '&8[&6&l!&8] &bHope you are all good'
+     - '&8[&6&l!&8] &bThis &bis &bexample &bof &bText &bComponent &bUsage (example)'
 
-  # for title broadcast
-  enable-title: false
 
-  title:
+  # add worlds here if you want to enable this feature
+  per-world:
+     interval: '5m'
+     enable: false
+
+     world:
+     - '&8[&6&l!&8] &bWelcome to the {world}'
+     - '&8[&6&l!&8] &bHope you are all good'
+
+auto-broadcast-title:
+
+   enable: true
+   interval: '5m'
+   titles:
 
     #This is a sample title format , you can add as much as you want
     #fade in , fade out and stay are based on ticks
@@ -29,3 +41,79 @@ auto-broadcast:
       fade-in: 30
       stay: 20
       fade-out: 30
+
+auto-broadcast-holo:
+
+   enable: true
+
+   interval: '5m'
+   # seconds that the messages will last
+   last: 10
+
+   # it does not matter what's name
+   # you can add as many as you want
+   # leaving it blank may lead to an error
+   messages:
+
+      first:
+
+         - '&8[&6&l!&8] &bHi &6{player} &bthis is a sample holo message'
+         - '&8[&6&l!&8] &bHope you are doing okay'
+         - '&8[&6&l!&8] &bOnline >> &6{online} / {max}'
+
+      second:
+         - '&8[&6&l!&8] &bHi &6{player} &bCool right?'
+         - '&8[&6&l!&8] &bAll placeholders are working fine with holos'
+         - '&8[&6&l!&8] &bOnline >> &6{online} / {max}'
+
+auto-broadcast-actionbar:
+
+   enable: true
+
+   interval:  '5m'
+
+   messages:
+     - '&8[&6&l!&8] &bWelcome to the server'
+     - '&8[&6&l!&8] &bHope you are all good'
+
+# enable this if you want to broadcast json messages instead of text components given
+auto-broadcast-json:
+
+    enable: false
+
+    interval: '5m'
+
+    # Guide for creating json
+    # https://minecraftjson.com/
+    messages:
+      - '{"text":"This is an example json!"}'
+
+# Text Component will always be at the last part of the message and here is an example check it above how it used
+# For you not to have any error add only one click event
+# for open url it must have https:// for the plugin to read that it is a website
+# Message:Text Component in game broadcast it will look like <Player message> <Clickable Text>
+# You can either remove click or hover if you do not want the feauture
+Text Component:
+  example:
+    message: '&6CLICK HERE'
+    click:
+      open_url: 'https://www.youtube.com'
+    hover: '&cHi there buddy'
+
+  example2:
+      message: '&6COPY CLIPBOARD'
+      click:
+         copy_clipboard: 'copied text'
+      hover: '&cClicking here then past something with ctrl + V at chat'
+
+  example3:
+      message: '&6RUN COMMAND'
+      click:
+         run_command: '/help'
+      hover: '&cClick here to run a command'
+
+  example4:
+      message: '&6SUGGEST COMMAND'
+      click:
+         suggest_command: '/help'
+      hover: '&cClick here to get a guide command'
